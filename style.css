@@ -1383,10 +1383,11 @@ Note: .fade-in-section is a trigger class and does not fade the parent itself to
 }
 
 .why-us-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 5.5rem;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
 .why-us-image-wrapper {
@@ -2721,25 +2722,11 @@ Note: .fade-in-section is a trigger class and does not fade the parent itself to
   }
 
   /* Testimonial & Why Choose Us Grid Stacking */
+  /* Why Choose Us Layout */
   .why-us-grid {
     display: flex !important;
-    flex-direction: column-reverse !important;
-    gap: 4.5rem;
-  }
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 4.5rem;
-  }
-  .why-us-image-wrapper {
-    max-width: 450px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .testimonials-quotes-col {
-    padding-right: 0;
-  }
-  .testimonials-photo-col {
-    display: none;
+    flex-direction: column !important;
+    gap: 2rem;
   }
 
   /* Grid Adjustments */
