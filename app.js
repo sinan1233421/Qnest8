@@ -159,63 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ==========================================
-  // 4. Testimonial Quotes Slider (Next/Prev Controls)
-  // ==========================================
-  const testSlides = document.querySelectorAll('.testimonial-slide');
-  const prevTestBtn = document.getElementById('prevTestBtn');
-  const nextTestBtn = document.getElementById('nextTestBtn');
-  let activeTestIndex = 0;
-  let testimonialInterval;
 
-  const showTestimonial = (index) => {
-    if (testSlides.length === 0) return;
-    
-    // Bounds check and wrap around
-    if (index < 0) {
-      activeTestIndex = testSlides.length - 1;
-    } else if (index >= testSlides.length) {
-      activeTestIndex = 0;
-    } else {
-      activeTestIndex = index;
-    }
-
-    testSlides.forEach((slide, idx) => {
-      if (idx === activeTestIndex) {
-        slide.classList.add('active');
-      } else {
-        slide.classList.remove('active');
-      }
-    });
-  };
-
-  if (prevTestBtn && nextTestBtn) {
-    prevTestBtn.addEventListener('click', () => {
-      showTestimonial(activeTestIndex - 1);
-      resetAutoPlay();
-    });
-
-    nextTestBtn.addEventListener('click', () => {
-      showTestimonial(activeTestIndex + 1);
-      resetAutoPlay();
-    });
-  }
-
-  // Auto-play Testimonials every 7 seconds
-  const startAutoPlay = () => {
-    testimonialInterval = setInterval(() => {
-      showTestimonial(activeTestIndex + 1);
-    }, 7000);
-  };
-
-  const resetAutoPlay = () => {
-    clearInterval(testimonialInterval);
-    startAutoPlay();
-  };
-
-  if (testSlides.length > 0) {
-    startAutoPlay();
-  }
 
   // ==========================================
   // 5. FAQ Accordion Toggle
@@ -730,17 +674,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const mobileFloatingCta = document.getElementById('mobileFloatingCta');
   const heroSection = document.getElementById('home');
-  const testimonialsSection = document.getElementById('testimonials');
+  const destinationsSection = document.getElementById('destinations');
 
   if (mobileFloatingCta && heroSection) {
     const handleScrollFloatingCta = () => {
       const heroBottom = heroSection.getBoundingClientRect().bottom;
-      const testimonialsBottom = testimonialsSection ? testimonialsSection.getBoundingClientRect().bottom : 9999;
+      const destinationsBottom = destinationsSection ? destinationsSection.getBoundingClientRect().bottom : 9999;
 
       if (heroBottom > 120) {
         mobileFloatingCta.classList.remove('state-center', 'state-side');
       }
-      else if (testimonialsBottom <= 150) {
+      else if (destinationsBottom <= 150) {
         mobileFloatingCta.classList.remove('state-center');
         mobileFloatingCta.classList.add('state-side');
       }
