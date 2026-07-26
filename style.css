@@ -55,7 +55,6 @@ html, body {
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -182,7 +181,6 @@ section {
   padding: clamp(3rem, 5vh, 5rem) 0;
   position: relative;
   overflow: hidden; /* Bulletproof clip for any absolute watermark elements extending off-screen */
-  scroll-snap-align: center;
   box-sizing: border-box;
 }
 
