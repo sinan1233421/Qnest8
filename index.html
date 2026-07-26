@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qnest Holidays — Custom Premium Kerala Travel Journeys</title>
+    <meta name="description"
+        content="Bespoke luxury Kerala travel itineraries crafted by experts. Explore backwaters, beaches, Ayurveda wellness, and heritage trails with Qnest Holidays.">
+    <link rel="stylesheet" href="style.css?v=7.0">
+</head>
+
+<body>
+
+    <!-- 1. TRANSLUCENT HEADER & STICKY NAV -->
+    <header class="header" id="headerSection">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#home" class="logo" id="headerLogo">Qnest Holidays</a>
+
+                <!-- Desktop Nav Links (Hidden on Tablet/Mobile) -->
+                <nav class="nav-menu" id="desktopNav">
+                    <ul class="nav-links">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#hotels" class="nav-link">Hotels</a></li>
+                        <li><a href="#destinations" class="nav-link">Destinations</a></li>
+                        <li><a href="#enquire" class="nav-link">Contacts</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-cta" id="headerCta">
+                    <a href="https://wa.me/919037534857?text=Hello%20Qnest%20Holidays%2C%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kerala.%20Please%20assist%20me%20with%20custom%20itineraries." target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        Plan My Trip
+                        <div class="btn-arrow-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 17L17 7M17 7H10M17 7V14" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Mobile burger toggle -->
+                <button class="mobile-nav-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#hotels" class="nav-link">Hotels</a></li>
+            <li><a href="#destinations" class="nav-link">Destinations</a></li>
+            <li><a href="#enquire" class="nav-link">Contacts</a></li>
+        </ul>
+        <a href="https://wa.me/919037534857?text=Hello%20Qnest%20Holidays%2C%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kerala.%20Please%20assist%20me%20with%20custom%20itineraries." target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 2rem; width: 100%;">Plan My Trip</a>
+    </div>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="https://res.cloudinary.com/ltevzqit/image/upload/v1784994515/hero_houseboat_bg_su2ut8.jpg"
+                alt="Traditional Kerala houseboat sailing in palm-fringed backwaters during golden hour" loading="eager"
+                fetchpriority="high">
+        </div>
+
+        <!-- Watermark text backdrop -->
+        <div class="watermark-bg">QNEST</div>
+
+        <div class="container">
+            <div class="hero-main-content">
+                <div class="about-tag-pill hero-tag-pill">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round">
+                        <path d="M5 12h14" />
+                    </svg>
+                    <span>Welcome to Qnest Holidays</span>
+                </div>
+                <h1 id="heroHeadline">Explore Beyond<br>The Map With Qnest Holidays</h1>
+            </div>
+
+            <!-- Hero bottom row -->
+            <div class="hero-bottom-grid" id="heroBottom">
+                <div class="hero-desc">
+                    <p>Bespoke premium journeys through God's Own Country – backwaters, spice hills, and coastline,
+                        designed around you.</p>
+                    <div class="hero-desc-row">
+                        <a href="#hotels" class="btn btn-hero-cta">
+                            Explore Luxury Hotels
+                            <div class="btn-arrow-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 17L17 7M17 7H10M17 7V14" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ABOUT SECTION ("Who We Are") -->
+    <section class="about fade-in-section" id="about">
+        <div class="container">
+            <div class="about-header-text">
+                <div class="about-tag-pill">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round">
+                        <path d="M5 12h14" />
+                    </svg>
+                    <span>Who We Are</span>
+                </div>
+                <h2>Since our journey began 7 years ago, our vision has remained the same: to redefine meaningful exploration. Today, Qnest Holidays is a trusted name in crafting curated luxury expeditions throughout God's Own Country.</h2>
+                <div class="about-cta-row">
+                    <a href="#enquire" class="btn btn-about-cta">
+                        MORE ABOUT US
+                        <div class="btn-arrow-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 17L17 7M17 7H10M17 7V14" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- New Stats Bar Row (Screenshot Style) -->
+            <div class="about-stats-bar" id="aboutStatsBar">
+                <div class="about-stat-item">
+                     <h3 class="stat-number" data-target="7" data-suffix="+">0+</h3>
+                     <span>Years of Happy Customers</span>
+                </div>
+                <div class="about-stat-item">
+                     <h3 class="stat-number" data-target="100" data-suffix="%">0%</h3>
+                     <span>Curated Journeys</span>
+                </div>
+                <div class="about-stat-item">
+                     <h3 class="stat-number" data-target="5" data-suffix="★">0★</h3>
+                     <span>Star Premium Experience</span>
+                </div>
+                <div class="about-stat-item">
+                    <h3 class="stat-number" data-target="24" data-suffix="/7">0/7</h3>
+                    <span>Local Support</span>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- 4. HOTELS SECTION (replacing original Destinations layout) -->
+    <section class="hotels fade-in-section" id="hotels">
+        <!-- Overlay backdrop layer for blurry transition -->
+        <div class="dest-bg-blur-layer" id="destBgBlurLayer"></div>
+        <div class="container dest-relative-container">
+            <!-- Centered Header Logo -->
+            <div class="dest-logo-wrapper">
+                <a href="#home" class="dest-logo">Qnest Holidays</a>
+            </div>
+
+            <div class="dest-header-centered">
+                <h2>Luxury Escapes</h2>
+                <p class="dest-subtitle-tagline">Discover Kerala's Finest Stays</p>
+            </div>
+
+            <!-- Pill category selector -->
+            <div class="dest-pill-nav" id="hotelPillNav">
+                <div class="dest-pill-nav-backdrop" id="destPillBackdrop"></div>
+                <button class="dest-pill-btn active" onclick="filterDestinations('thekkady')">Thekkady</button>
+                <button class="dest-pill-btn" onclick="filterDestinations('munnar')">Munnar</button>
+                <button class="dest-pill-btn" onclick="filterDestinations('alappuzha')">Alappuzha</button>
+                <button class="dest-pill-btn" onclick="filterDestinations('kovalam')">Kovalam</button>
+                <button class="dest-pill-btn" onclick="filterDestinations('shanghumugham')">Shanghumugham</button>
+                <button class="dest-pill-btn" onclick="filterDestinations('kochi')">Kochi</button>
+            </div>
+        </div>
+
+        <!-- Slider Wrapper -->
+        <div class="dest-slider-container single-hotel">
+            <!-- Center Slide -->
+            <div class="dest-slide-card center-slide" data-category="thekkady">
+                <div class="hotel-image-placeholder">
+                    <div class="placeholder-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                        </svg>
+                    </div>
+                    <div class="placeholder-text">Photo Awaiting Upload</div>
+                    <div class="placeholder-specs">1200 x 900 px (4:3 Ratio)</div>
+                </div>
+                <img src="" alt="" class="hotel-img" style="display: none;">
+                <div class="slide-card-content text-bottom">
+                    <h3>Blanket Days Resort & Spa</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WHY CHOOSE US SECTION -->
+    <section class="why-us fade-in-section" id="whyUs">
+        <div class="container">
+            <div class="why-us-grid">
+                <!-- Left photo frame with overlapping card -->
+                <div class="why-us-image-wrapper" id="whyUsImage">
+                    <div class="why-us-image-inner">
+                        <img src="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/founder_xfuvif.jpg" alt="Qnest Holidays Founder Anjali Menon">
+                    </div>
+                    <!-- Overlapping Client review card -->
+                    <div class="why-us-floating-review" id="whyUsReviewCard">
+                        <div class="why-us-stars">★★★★★</div>
+                        <blockquote>"The custom routing Anjali planned for my family was absolutely seamless. Standard
+                            packages cannot compare to this level of detail."</blockquote>
+                        <div class="why-us-client-row">
+                            <span class="why-us-client-name">Sarah Mitchell</span>
+                            <span class="why-us-client-location">Melbourne, AU</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Features Checklist -->
+                <div class="why-us-content" id="whyUsContent">
+                    <span class="subtitle">Our Promise</span>
+                    <h2>The Qnest Difference</h2>
+
+                    <div class="why-us-list">
+                        <!-- Item 1 -->
+                        <div class="why-us-item">
+                            <div class="why-us-icon-wrapper">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
+                                        stroke="currentColor" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Seamless Booking</h3>
+                                <p>Secure your perfect trip with a streamlined, direct reservation process designed
+                                    completely around your pacing.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="why-us-item">
+                            <div class="why-us-icon-wrapper">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3"
+                                        stroke="currentColor" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>100% Vetted Accommodations</h3>
+                                <p>We do not guess. Our team has personally stayed in and approved every resort,
+                                    homestay, and room we book for you.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="why-us-item">
+                            <div class="why-us-icon-wrapper">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                        stroke="currentColor" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>24/7 Local Concierge</h3>
+                                <p>Enjoy absolute peace of mind with a dedicated local ground contact standing by for
+                                    adjustments on the go.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. BESPOKE CUSTOM JOURNEY SHOWCASE -->
+    <section class="packages fade-in-section" id="blueprints">
+        <div class="watermark-bg">BESPOKE</div>
+        <div class="container">
+            <div class="packages-header-row">
+                <div class="section-header">
+                    <span class="subtitle">Your Dream Trip</span>
+                    <h2>Crafted Just For You</h2>
+                </div>
+            </div>
+
+            <div class="custom-journey-showcase">
+                <div class="showcase-img-col">
+                    <img src="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/pkg_bloom_om2pqa.jpg" alt="Tailored Kerala Munnar Hills landscape">
+                    <div class="showcase-badge">100% Custom Curation</div>
+                </div>
+                <div class="showcase-content-col">
+                    <span class="showcase-tag">Crafted For You</span>
+                    <h3>Bespoke Kerala Travel Blueprints</h3>
+                    <p>We design bespoke Kerala journeys from scratch, handpicking every detail to perfectly match your unique pace and preferences.</p>
+
+                    <ul class="customization-features">
+                        <li>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                            <div>
+                                <strong>Tailored Destinations</strong>
+                                <span>Combine hill stations, backwaters, beaches, and wildlife trails at your own
+                                    pace.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                            <div>
+                                <strong>Handpicked Stays</strong>
+                                <span>Choose from luxury treehouses, private pool villas, historic heritage bungalows,
+                                    or premium houseboats.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                            <div>
+                                <strong>Immersive Experiences</strong>
+                                <span>Integrate private cooking classes, spice plantation treks, Ayurveda wellness, or
+                                    cultural performances.</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="showcase-cta">
+                        <a href="#enquire" class="btn btn-primary">
+                            Design Your Custom Journey
+                            <div class="btn-arrow-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. DESTINATIONS SECTION (replacing Top Activities) -->
+    <section class="experience-banner fade-in-section" id="destinations">
+        <div class="container">
+            <div class="section-header" style="text-align: center; max-width: 750px; margin: 0 auto 2rem;">
+                <span class="subtitle">Destinations</span>
+                <h2>Explore Our Destinations</h2>
+                <p class="dest-subtitle-tagline" style="margin-top: 0.5rem; color: rgba(0, 0, 0, 0.6) !important;">Uncover Kerala's Hidden Treasures</p>
+            </div>
+
+            <!-- Pill Navigation for the 7 featured destinations -->
+            <div class="exp-pill-nav-container" style="text-align: center; margin-bottom: 2.5rem;">
+                <div class="dest-pill-nav" id="expPillNav">
+                    <div class="dest-pill-nav-backdrop" id="expPillBackdrop"></div>
+                    <button class="dest-pill-btn active" onclick="filterExperiences('munnar')">Munnar</button>
+                    <button class="dest-pill-btn" onclick="filterExperiences('alappuzha')">Alappuzha</button>
+                    <button class="dest-pill-btn" onclick="filterExperiences('trivandrum')">Trivandrum</button>
+                    <button class="dest-pill-btn" onclick="filterExperiences('thekkady')">Thekkady</button>
+                    <button class="dest-pill-btn" onclick="filterExperiences('kochi')">Kochi</button>
+                    <button class="dest-pill-btn" onclick="filterExperiences('kumarakom')">Kumarakom</button>
+                    <button class="dest-pill-btn" onclick="filterExperiences('athirapally')">Athirapally</button>
+                </div>
+            </div>
+
+            <div class="exp-banner-wrapper" id="expBannerWrapper">
+                <img id="expBannerImg" src="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/exp_spicetrails_c2eqsx.jpg" alt="Munnar Tea Plantations">
+
+                <!-- Floating white info box overlapping image -->
+                <div class="exp-banner-float-card" id="expBannerCard">
+                    <h3 id="expCardTitle">Munnar</h3>
+                    <h4 id="expCardSubtitle" style="font-family: Georgia, serif; font-style: italic; font-size: 1.05rem; color: var(--color-primary); margin-top: 0.25rem; margin-bottom: 0.75rem;">Tea Plantations</h4>
+                    <p id="expCardDesc">Wander through the lush, emerald tea plantations that blanket the misty hills of Munnar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. TESTIMONIALS SECTION -->
+    <section class="testimonials fade-in-section" id="testimonials">
+        <div class="container">
+            <div class="testimonials-grid">
+                <!-- Quotes Column -->
+                <div class="testimonials-quotes-col" id="testQuotes">
+                    <div class="testimonials-header-row">
+                        <div class="section-header">
+                            <span class="subtitle">What Our Clients Say</span>
+                            <h2>Guest Experiences</h2>
+                        </div>
+
+                        <!-- Switch slider controls -->
+                        <div class="carousel-controls" id="testControls">
+                            <button class="carousel-nav-btn" id="prevTestBtn" aria-label="Previous quote">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button class="carousel-nav-btn" id="nextTestBtn" aria-label="Next quote">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="testimonials-score-row">
+                        <div class="why-us-stars" style="font-size: 1.25rem;">★★★★★</div>
+                        <div class="testimonials-score-val">5.0</div>
+                    </div>
+
+                    <!-- Dynamic quotes carousel -->
+                    <div class="testimonial-carousel" id="testimonialCarousel">
+                        <!-- Slide 1 -->
+                        <div class="testimonial-slide active" id="testSlide1">
+                            <blockquote>"We've traveled the world, but nothing prepared us for the meticulous care of
+                                Qnest Holidays. The private houseboat, the custom spices menus, the guides... they
+                                didn't just take us to places, they introduced us to them. Absolute perfection!"
+                            </blockquote>
+                            <div class="client-name">Valery Patrin</div>
+                            <div class="client-location">Melbourne, Australia</div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="testimonial-slide" id="testSlide2">
+                            <blockquote>"Traveling with elderly parents can be challenging, but Qnest custom-tailored
+                                our routing. Minimal travel times, easily accessible wellness resorts, and custom
+                                dietary food planned ahead at every hotel. Highly professional."</blockquote>
+                            <div class="client-name">Rajesh Kumar</div>
+                            <div class="client-location">New Delhi, India</div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="testimonial-slide" id="testSlide3">
+                            <blockquote>"The spice plantation hikes in Munnar were stunning, and the heritage hotel in
+                                Fort Kochi was gorgeous. The level of detail and personalization is unmatched. Every
+                                hotel recommended felt authentic, not corporate."</blockquote>
+                            <div class="client-name">Elena Rostova</div>
+                            <div class="client-location">London, UK</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right landscape photo column -->
+                <div class="testimonials-photo-col" id="testPhotoCol">
+                    <img src="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/hero_bg_btdtb3.jpg" alt="Traveler looking at backwaters landscape">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 11. INQUIRY FORM SECTION -->
+    <section class="inquiry fade-in-section" id="enquire">
+        <div class="container">
+            <div class="inquiry-container">
+                <div class="inquiry-grid">
+                    <div class="inquiry-image-col">
+                        <img src="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/pkg_serenity_ozofr6.jpg" alt="Bespoke luxury Kerala travel by Qnest Holidays">
+                    </div>
+                    <div class="form-wrapper" id="formWrapper">
+                        <div class="section-header inquiry-header" style="text-align: left; margin-bottom: 2rem;">
+                            <span class="subtitle" style="margin-bottom: 0.5rem; display: inline-block;">Plan My Trip</span>
+                            <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; font-weight: 700; margin-bottom: 0.5rem;">Begin your Journey with Qnest Holidays.</h2>
+                            <p style="font-size: 0.95rem; color: var(--color-text-muted);">Our specialist will contact you within 12 hours.</p>
+                        </div>
+
+                        <form id="inquiryForm" novalidate>
+                            <div class="form-grid">
+                                <!-- Full Name -->
+                                <div class="form-group full-width" id="groupName">
+                                    <label for="fullName" class="form-label">Full Name *</label>
+                                    <input type="text" id="fullName" class="form-input" placeholder="e.g. Sarah Mitchell" required>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="form-group full-width" id="groupPhone">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" id="phone" class="form-input" placeholder="e.g. +91 90375 34857" required>
+                                </div>
+
+                                <!-- Submit button -->
+                                <div class="form-group full-width" id="groupSubmit" style="margin-top: 0.5rem;">
+                                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                        Plan my journey
+                                        <div class="btn-arrow-icon">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M5 12h14M12 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Hotel Photo Gallery Lightbox Modal -->
+    <div class="gallery-overlay" id="galleryOverlay">
+        <button class="gallery-close-btn" id="galleryCloseBtn" aria-label="Close gallery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        
+        <div class="gallery-container">
+            <button class="gallery-nav-btn prev" id="galleryPrevBtn" aria-label="Previous photo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            
+            <div class="gallery-main-viewport">
+                <img src="" alt="Hotel Photo" class="gallery-main-img" id="galleryMainImg">
+                <div class="gallery-photo-info">
+                    <h3 id="galleryHotelName">Hotel Name</h3>
+                    <p id="galleryPhotoCounter">1 of 5</p>
+                </div>
+            </div>
+            
+            <button class="gallery-nav-btn next" id="galleryNextBtn" aria-label="Next photo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="gallery-thumbnails-wrapper">
+            <div class="gallery-thumbnails" id="galleryThumbnails">
+                <!-- Thumbnails injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Success Dialog Modal Pop-up -->
+    <div class="form-success-overlay" id="formSuccessOverlay">
+        <div class="success-modal" id="successModal">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3" stroke="currentColor" />
+                </svg>
+            </div>
+            <h3>Enquiry Received</h3>
+            <p>Thank you for reaching out to Qnest Holidays. A boutique travel planner will review your details and
+                connect with you via email or phone within 12 hours.</p>
+            <button class="btn btn-primary" id="closeSuccessBtn">Close Window</button>
+        </div>
+    </div>
+
+    <!-- 13. FOOTER (Translucent backdrop & watermark) -->
+    <footer class="footer" id="footer">
+        <!-- Blended image backdrop overlay -->
+        <div class="footer-backdrop">
+            <img src="assets/pkg_heritage.png" alt="Chinese fishing nets backwaters background image footer">
+        </div>
+
+        <!-- Watermark brand text behind -->
+        <div class="watermark-bg">QNEST</div>
+
+        <div class="container">
+            <!-- Top contact row -->
+            <div class="footer-contact-row" id="footerContactRow">
+                <span>Phone: +91 90375 34857 | Email: info@qnestholidays.com</span>
+            </div>
+
+            <!-- Main grids columns -->
+            <div class="footer-main-grid">
+                <div class="footer-links-col" id="footerNavCol1">
+                    <h4 class="footer-title">Main Page</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#hotels" class="footer-link">Hotels</a></li>
+                        <li><a href="#destinations" class="footer-link">Destinations</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-center-brand" id="footerCenterBrand">
+                    <h2>Expedition Expertise<br>At Your Service</h2>
+                    <a href="#enquire" class="btn btn-footer-cta">
+                        Begin Your Journey
+                        <div class="btn-arrow-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 17L17 7M17 7H10M17 7V14" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="footer-links-col" id="footerNavCol2">
+                    <h4 class="footer-title">Social Media</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.instagram.com/qnestholidays/?hl=en" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a></li>
+                        <li><a href="#" class="footer-link">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom copyright information -->
+            <div class="footer-bottom-row">
+                <p>&copy; 2026 Qnest Holidays. All rights reserved.</p>
+                <div class="footer-policy-links">
+                    <a href="#" style="margin-right: 1.5rem;">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    <!-- Mobile Floating Side/Center CTA Button (Morphs on scroll) -->
+    <div class="mobile-floating-cta" id="mobileFloatingCta">
+        <a href="https://wa.me/919037534857?text=Hello%20Qnest%20Holidays%2C%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kerala.%20Please%20assist%20me%20with%20custom%20itineraries." target="_blank" rel="noopener noreferrer" class="btn btn-floating-cta" aria-label="Plan My Trip">
+            <span class="cta-text">Plan My Trip</span>
+            <div class="btn-arrow-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H10M17 7V14" />
+                </svg>
+            </div>
+        </a>
+    </div>
+
+    <script src="app.js?v=1.1"></script>
+</body>
+
+</html>
