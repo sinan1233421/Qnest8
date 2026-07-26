@@ -364,12 +364,15 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'munnar', title: "Grand Cliff Munnar", sub: "Munnar", rating: "★★★★★ Premium Hill Resort", img: "assets/grand_cliff_5.jpg", gallery: ["assets/grand_cliff_5.jpg", "assets/grand_cliff_1.jpg", "assets/grand_cliff_2.jpg", "assets/grand_cliff_3.jpg", "assets/grand_cliff_4.jpg"] },
     { id: 'alappuzha', title: "Uday Backwater Resort", sub: "Alappuzha", rating: "★★★★★ Luxury Backwater Resort", img: "https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_4_2_iitxkm.jpg", gallery: ["https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_4_2_iitxkm.jpg", "https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_5_1_vor5hr.jpg"] },
     { id: 'kovalam', title: "UDS Hotel & Resort", sub: "Kovalam", rating: "★★★★★ Luxury Beach Resort & Spa", img: "assets/uds_alleppey_1.jpg", gallery: ["assets/uds_alleppey_1.jpg", "assets/uds_alleppey_2.jpg", "assets/uds_alleppey_3.jpg", "assets/uds_alleppey_4.jpg"] },
-    { id: 'shanghumugham', title: "UDS Hotel & Resort", sub: "Shanghumugham", rating: "★★★★★ Premium Transit Resort", img: "assets/uds_alleppey_1.jpg", gallery: ["assets/uds_alleppey_1.jpg", "assets/uds_alleppey_2.jpg", "assets/uds_alleppey_3.jpg", "assets/uds_alleppey_4.jpg"] },
     { id: 'kochi', title: "Ramada Resort by Wyndham", sub: "Kochi", rating: "★★★★★ Luxury Waterfront Resort", img: "assets/ramada_kochi_2.jpg", gallery: ["assets/ramada_kochi_2.jpg", "assets/ramada_kochi_1.jpg", "assets/ramada_kochi_3.jpg"] }
   ];
 
-  const categoriesList = ['thekkady', 'munnar', 'alappuzha', 'kovalam', 'shanghumugham', 'kochi'];
+  const categoriesList = ['thekkady', 'munnar', 'alappuzha', 'kovalam', 'kochi'];
   let activeCategory = 'thekkady';
+
+  // Track scroll position of hotels marquee
+  let expectedScrollLeft = 0;
+  let currentScrollPosition = 0; // Float scroll accumulator to avoid sub-pixel rounding freeze on mobile
   
   // Track classes for 4 cards (left, center, right, and hidden buffer)
   let slideClasses = ['left-slide', 'center-slide', 'right-slide', 'hidden-right'];
@@ -447,9 +450,8 @@ document.addEventListener('DOMContentLoaded', () => {
     destTransitionTimeout = setTimeout(() => {
       sliderContainer.innerHTML = ''; // Clear existing cards
       sliderContainer.scrollLeft = 0; // Reset scroll position to beginning
-      if (typeof expectedScrollLeft !== 'undefined') {
-        expectedScrollLeft = 0; // Reset scroll tracker
-      }
+      expectedScrollLeft = 0;
+      currentScrollPosition = 0;
 
       const item = hotelData.find(h => h.id === category);
       if (item && item.gallery && item.gallery.length > 0) {
@@ -824,7 +826,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 12. Infinite Auto-Marquee and Drag-to-Scroll (Hotels Section)
   // ==========================================
   const hotelSlider = document.querySelector('.dest-slider-container.single-hotel');
-  let expectedScrollLeft = 0;
   let isUserScrolling = false;
   let userScrollTimeout = null;
   let isHovered = false;
@@ -847,12 +848,13 @@ document.addEventListener('DOMContentLoaded', () => {
     hotelSlider.addEventListener('scroll', () => {
       // Check if actual scroll position deviates from programmatic auto-scroll path
       const diff = Math.abs(hotelSlider.scrollLeft - expectedScrollLeft);
-      if (diff > 1.5) {
+      if (diff > 8) { // Increased threshold to avoid sub-pixel rounding false positives
         // User is interacting! Halt auto-scroll.
         isUserScrolling = true;
         clearTimeout(userScrollTimeout);
         userScrollTimeout = setTimeout(() => {
           isUserScrolling = false;
+          currentScrollPosition = hotelSlider.scrollLeft;
           expectedScrollLeft = hotelSlider.scrollLeft;
         }, 2200); // Resume auto scroll after 2.2 seconds of inactivity
       }
@@ -873,6 +875,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hotelSlider.classList.remove('grabbing');
       userScrollTimeout = setTimeout(() => {
         isUserScrolling = false;
+        currentScrollPosition = hotelSlider.scrollLeft;
         expectedScrollLeft = hotelSlider.scrollLeft;
       }, 2200);
     });
@@ -884,15 +887,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const walk = (x - startX) * 1.5; // Drag sensitivity multiplier
       hotelSlider.scrollLeft = scrollLeftStart - walk;
       expectedScrollLeft = hotelSlider.scrollLeft;
+      currentScrollPosition = hotelSlider.scrollLeft;
+    });
+
+    // Touch Events for Mobile Drag-to-Scroll Mechanics (pause marquee on touch start/move)
+    hotelSlider.addEventListener('touchstart', (e) => {
+      isDown = true;
+      isUserScrolling = true;
+      clearTimeout(userScrollTimeout);
+    }, { passive: true });
+
+    hotelSlider.addEventListener('touchend', () => {
+      isDown = false;
+      clearTimeout(userScrollTimeout);
+      userScrollTimeout = setTimeout(() => {
+        isUserScrolling = false;
+        currentScrollPosition = hotelSlider.scrollLeft;
+        expectedScrollLeft = hotelSlider.scrollLeft;
+      }, 2200);
     });
 
     // Stretched Frame-by-Frame requestAnimationFrame Loop
     function marqueeStep() {
       if (!isUserScrolling && !isDown) {
         const maxScroll = hotelSlider.scrollWidth - hotelSlider.clientWidth;
-        if (maxScroll > 0 && hotelSlider.scrollLeft < maxScroll - 1) {
-          const speed = isHovered ? 0.25 : 0.65; // slow speed on hover, normal speed otherwise (0.65px per frame is very slow and smooth)
-          hotelSlider.scrollLeft += speed;
+        if (maxScroll > 0 && currentScrollPosition < maxScroll - 1) {
+          const speed = isHovered ? 0.25 : 0.65; // slow speed on hover, normal speed otherwise
+          currentScrollPosition += speed;
+          hotelSlider.scrollLeft = currentScrollPosition;
           expectedScrollLeft = hotelSlider.scrollLeft;
         }
       }
