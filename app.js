@@ -155,6 +155,13 @@ document.addEventListener('DOMContentLoaded', () => {
           top: offsetPosition,
           behavior: 'smooth'
         });
+
+        if (targetId === '#enquire') {
+          setTimeout(() => {
+            const firstInput = document.getElementById('fullName');
+            if (firstInput) firstInput.focus({ preventScroll: true });
+          }, 450);
+        }
       }
     });
   });
@@ -224,12 +231,16 @@ document.addEventListener('DOMContentLoaded', () => {
     inquiryForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Form validation (Name and Phone only as per brief)
-      const name = document.getElementById('fullName')?.value.trim() || '';
-      const phone = document.getElementById('phone')?.value.trim() || '';
+      // Form validation (Name and Phone)
+      const nameInput = document.getElementById('fullName');
+      const phoneInput = document.getElementById('phone');
+      const name = nameInput?.value.trim() || '';
+      const phone = phoneInput?.value.trim() || '';
 
       if (!name || !phone) {
         alert('Please fill out all required fields.');
+        if (!name && nameInput) nameInput.focus();
+        else if (!phone && phoneInput) phoneInput.focus();
         return;
       }
 
@@ -237,9 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const phoneRegex = /^\+?[0-9\s\-()]{7,18}$/;
       if (!phoneRegex.test(phone)) {
         alert('Please enter a valid phone number.');
-        const phoneInput = document.getElementById('phone');
         if (phoneInput) phoneInput.focus();
         return;
+      }
+
+      // Execute Zoho CRM mandatory validation check if available
+      if (typeof window.checkMandatory1346784000000558077 === 'function') {
+        const isValid = window.checkMandatory1346784000000558077();
+        if (!isValid) return;
       }
 
       const formData = {
@@ -247,16 +263,16 @@ document.addEventListener('DOMContentLoaded', () => {
         phone
       };
 
-      console.log('Sending Enquiry (Qnest Holidays):', formData);
+      console.log('Converting Enquiry to Zoho CRM Lead (Qnest Holidays):', formData);
 
-      // Construct WhatsApp message and redirect in a new tab
-      const waMsg = `Hello Qnest Holidays, I would like to plan a trip to Kerala.\n\nMy Details:\n- Name: ${name}\n- Phone: ${phone}`;
-      const waUrl = `https://wa.me/919037534857?text=${encodeURIComponent(waMsg)}`;
-      window.open(waUrl, '_blank');
+      // Submit form directly to Zoho CRM WebToLead endpoint via target hidden iframe
+      HTMLFormElement.prototype.submit.call(inquiryForm);
 
       // Open Success Overlay popup
-      successOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      if (successOverlay) {
+        successOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
 
       inquiryForm.reset();
     });
