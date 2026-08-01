@@ -27,6 +27,9 @@
     <meta name="twitter:description" content="Bespoke luxury Kerala travel itineraries crafted by experts. Explore backwaters, beaches, Ayurveda wellness, and heritage trails." />
     <meta name="twitter:image" content="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/hero_bg_btdtb3.jpg" />
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+
     <link rel="stylesheet" href="style.css?v=7.0">
 </head>
 
@@ -50,7 +53,7 @@
                 </nav>
 
                 <div class="header-cta" id="headerCta">
-                    <a href="https://wa.me/919037534857?text=Hello%20Qnest%20Holidays%2C%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kerala.%20Please%20assist%20me%20with%20custom%20itineraries." target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <a href="#enquire" class="btn btn-outline">
                         Plan My Trip
                         <div class="btn-arrow-circle">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -81,7 +84,7 @@
             <li><a href="#destinations" class="nav-link">Destinations</a></li>
             <li><a href="#enquire" class="nav-link">Contacts</a></li>
         </ul>
-        <a href="https://wa.me/919037534857?text=Hello%20Qnest%20Holidays%2C%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kerala.%20Please%20assist%20me%20with%20custom%20itineraries." target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 2rem; width: 100%;">Plan My Trip</a>
+        <a href="#enquire" class="btn btn-primary" style="margin-top: 2rem; width: 100%;">Plan My Trip</a>
     </div>
 
     <!-- 2. HERO SECTION -->
@@ -408,23 +411,31 @@
                             <p style="font-size: 0.95rem; color: var(--color-text-muted);">Our specialist will contact you within 12 hours.</p>
                         </div>
 
-                        <form id="inquiryForm" novalidate>
+                        <form id="inquiryForm" name="WebToLeads1346784000000558077" action="https://crm.zoho.in/crm/WebToLeadForm" method="POST" accept-charset="UTF-8" target="zoho_hidden_iframe" novalidate>
+                            <!-- Required Zoho CRM Web-to-Lead Hidden Fields -->
+                            <input type="text" style="display:none;" name="xnQsjsdp" value="deda7ddae052f76a0f480ff7d0b8f85ffbda84c23e6e1efc2289101c04b64ac9">
+                            <input type="hidden" name="zc_gad" id="zc_gad" value="">
+                            <input type="text" style="display:none;" name="xmIwtLD" value="025a8bed9f5081b4ec158be6f350e002d7f70ba7a35dd9e3865ba4a20f6b0cef309f8c3d90052a6cfa9d0d41219f8feb">
+                            <input type="text" style="display:none;" name="actionType" value="TGVhZHM=">
+                            <input type="text" style="display:none;" name="returnURL" value="null">
+                            <input type="text" style="display:none;" name="aG9uZXlwb3Q" value="">
+
                             <div class="form-grid">
                                 <!-- Full Name -->
                                 <div class="form-group full-width" id="groupName">
                                     <label for="fullName" class="form-label">Full Name *</label>
-                                    <input type="text" id="fullName" class="form-input" placeholder="e.g. Sarah Mitchell" required>
+                                    <input type="text" id="fullName" name="Last Name" class="form-input" placeholder="e.g. Sarah Mitchell" required maxlength="80">
                                 </div>
 
                                 <!-- Phone -->
                                 <div class="form-group full-width" id="groupPhone">
                                     <label for="phone" class="form-label">Phone Number *</label>
-                                    <input type="tel" id="phone" class="form-input" placeholder="e.g. +91 90375 34857" required>
+                                    <input type="tel" id="phone" name="Mobile" class="form-input" placeholder="e.g. +91 90375 34857" required maxlength="30">
                                 </div>
 
                                 <!-- Submit button -->
                                 <div class="form-group full-width" id="groupSubmit" style="margin-top: 0.5rem;">
-                                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                    <button type="submit" id="formsubmit" class="btn btn-primary" style="width: 100%;">
                                         Plan my journey
                                         <div class="btn-arrow-icon">
                                             <svg viewBox="0 0 24 24">
@@ -435,6 +446,8 @@
                                 </div>
                             </div>
                         </form>
+                        <!-- Invisible Iframe for smooth background submission to Zoho CRM -->
+                        <iframe name="zoho_hidden_iframe" id="zoho_hidden_iframe" style="display:none;"></iframe>
                     </div>
                 </div>
             </div>
@@ -557,7 +570,7 @@
         </div>
     <!-- Mobile Floating Side/Center CTA Button (Morphs on scroll) -->
     <div class="mobile-floating-cta" id="mobileFloatingCta">
-        <a href="https://wa.me/919037534857?text=Hello%20Qnest%20Holidays%2C%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kerala.%20Please%20assist%20me%20with%20custom%20itineraries." target="_blank" rel="noopener noreferrer" class="btn btn-floating-cta" aria-label="Plan My Trip">
+        <a href="#enquire" class="btn btn-floating-cta" aria-label="Plan My Trip">
             <span class="cta-text">Plan My Trip</span>
             <div class="btn-arrow-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
@@ -568,6 +581,41 @@
         </a>
     </div>
 
+    <!-- Zoho CRM WebForm Mandatory Check & Analytics Tracking Scripts -->
+    <script>
+        window._wFa_ajax_will_be_replaced = false;
+        if (typeof window._wfa_fstprtcken === 'undefined') {
+            window._wfa_fstprtcken = {};
+        }
+        window._wfa_fstprtcken[1346784000000558077] = true;
+
+        function checkMandatory1346784000000558077() {
+            var mndFileds = new Array('Last Name', 'Mobile');
+            var fldLangVal = new Array('Name', 'WhatsApp Number');
+            for (var i = 0; i < mndFileds.length; i++) {
+                var fieldObj = document.forms['WebToLeads1346784000000558077'][mndFileds[i]];
+                if (fieldObj) {
+                    if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
+                        alert(fldLangVal[i] + ' cannot be empty.');
+                        fieldObj.focus();
+                        return false;
+                    }
+                }
+            }
+            var urlparams = new URLSearchParams(window.location.search);
+            if (urlparams.has('service') && (urlparams.get('service') === 'smarturl')) {
+                var webform = document.getElementById('inquiryForm');
+                var service = urlparams.get('service');
+                var smarturlfield = document.createElement('input');
+                smarturlfield.setAttribute('type', 'hidden');
+                smarturlfield.setAttribute('value', service);
+                smarturlfield.setAttribute('name', 'service');
+                if (webform) webform.appendChild(smarturlfield);
+            }
+            return true;
+        }
+    </script>
+    <script id="wf_anal" src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=51dd9048f66c8e42a204010be3daf06a960253a86a31c9efdc2d0b42080d137a851f4e8a1fb1bf0031aaca3f6d6fbfa7gidc99c57f2b7949cd837bbdeb29ac33dc5f33abb2d0a0d7f172b246a7c29830a50gid0aea06f5bc78fed69ab459207b18ef6b28b0bafddc39fb9cd635960485dccfd1gid828b65fa7bc1a16730ddbd238c6b1f4a0a1d8e202bcdb6bd331325cb72d8a948&tw=e95246891435f8ee2e82ac86128a38918e24a090ed8894637f2f5ba4e87cff8a&version=v2"></script>
     <script src="app.js?v=1.1"></script>
 </body>
 
