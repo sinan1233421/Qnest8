@@ -682,9 +682,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Create one set of cards (no duplication)
         createCards();
+        updateSubHotelNav(item);
       }
     }, 140);
   };
+
+  // Helper to build sub-hotel navigation buttons for hotels under the active destination
+  function updateSubHotelNav(item) {
+    const container = document.getElementById('subHotelNav');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!item || !item.gallery || item.gallery.length === 0) return;
+
+    // Extract unique hotel titles in order of appearance in gallery
+    const hotels = [];
+    item.gallery.forEach((photoItem, index) => {
+      const title = (typeof photoItem === 'object' && photoItem.title) ? photoItem.title : item.title;
+      if (!hotels.some(h => h.title === title)) {
+        hotels.push({
+          title: title,
+          firstIndex: index
+        });
+      }
+    });
+
+    // Render sub-pill button for each hotel
+    hotels.forEach((h, i) => {
+      const btn = document.createElement('button');
+      btn.className = `sub-hotel-btn ${i === 0 ? 'active' : ''}`;
+      btn.setAttribute('type', 'button');
+      btn.innerHTML = `
+        <svg class="sub-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"></path>
+          <path d="M9 7h1"></path><path d="M9 11h1"></path><path d="M9 15h1"></path>
+          <path d="M14 7h1"></path><path d="M14 11h1"></path><path d="M14 15h1"></path>
+          <path d="M10 21v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4"></path>
+        </svg>
+        <span>${h.title}</span>
+      `;
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        container.querySelectorAll('.sub-hotel-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const sliderContainer = document.querySelector('.dest-slider-container.single-hotel');
+        if (sliderContainer) {
+          const cards = sliderContainer.querySelectorAll('.dest-slide-card');
+          if (cards[h.firstIndex]) {
+            const cardLeft = cards[h.firstIndex].offsetLeft;
+            sliderContainer.scrollTo({
+              left: cardLeft,
+              behavior: 'smooth'
+            });
+            currentScrollPosition = cardLeft;
+            expectedScrollLeft = cardLeft;
+          }
+        }
+      });
+
+      container.appendChild(btn);
+    });
+  }
 
   // ==========================================
   // 11. Destinations Section (Activity Switcher)
@@ -1115,6 +1175,41 @@ document.addEventListener('DOMContentLoaded', () => {
         expectedScrollLeft = hotelSlider.scrollLeft;
       }, 2200);
     });
+
+    // Sync active sub-hotel pill button based on current scroll position
+    const syncActiveSubHotel = () => {
+      const container = document.getElementById('subHotelNav');
+      if (!container) return;
+      const cards = hotelSlider.querySelectorAll('.dest-slide-card');
+      if (cards.length === 0) return;
+
+      const scrollPos = hotelSlider.scrollLeft;
+      let activeTitle = "";
+      let minDistance = Infinity;
+
+      cards.forEach(card => {
+        const dist = Math.abs(card.offsetLeft - scrollPos);
+        if (dist < minDistance) {
+          minDistance = dist;
+          const h3 = card.querySelector('h3');
+          if (h3) activeTitle = h3.textContent.trim();
+        }
+      });
+
+      if (activeTitle) {
+        const btns = container.querySelectorAll('.sub-hotel-btn');
+        btns.forEach(btn => {
+          const span = btn.querySelector('span');
+          if (span && span.textContent.trim() === activeTitle) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+    };
+
+    hotelSlider.addEventListener('scroll', syncActiveSubHotel, { passive: true });
 
     // Stretched Frame-by-Frame requestAnimationFrame Loop
     function marqueeStep() {
