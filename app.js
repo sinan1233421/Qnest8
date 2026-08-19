@@ -376,14 +376,197 @@ document.addEventListener('DOMContentLoaded', () => {
   // 10. Hotels Section Filter & Slider (11 Destinations Cover Flow)
   // ==========================================
   const hotelData = [
-    { id: 'thekkady', title: "Blanket Days Resort & Spa", sub: "Thekkady", rating: "★★★★★ Luxury Resort & Spa", img: "assets/blanket_days_2.jpg", gallery: ["assets/blanket_days_2.jpg", "assets/blanket_days_1.jpg", "assets/blanket_days_3.jpg", "assets/blanket_days_4.jpg", "assets/blanket_days_5.jpg"] },
+    { 
+      id: 'thekkady', 
+      title: "Greenwoods Resort Thekkady", 
+      sub: "Thekkady", 
+      rating: "★★★★★ Luxury Resort & Spa", 
+      img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_41_znm0ng.webp", 
+      gallery: [
+        { url: "assets/blanket_days_2.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        { url: "assets/blanket_days_1.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        { url: "assets/blanket_days_3.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        { url: "assets/blanket_days_4.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        { url: "assets/blanket_days_5.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_41_znm0ng.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140474/unnamed_43_lg9qc6.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140474/unnamed_44_uowrle.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_42_hmwikq.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_38_zxwpfn.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_40_rjarts.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_39_avlx7y.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140472/unnamed_37_i1ykk5.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140472/unnamed_36_owcrd1.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_34_gtmqo2.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_35_q4eutn.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_33_pw6ny0.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_32_xnlhwv.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_28_faayg2.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_30_yhzkf3.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_29_c13aq5.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_31_dijxas.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_27_xjx38o.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_26_wilhtc.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140469/unnamed_20_pkw3hd.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_22_sjqham.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140469/unnamed_24_gnyf2w.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140469/unnamed_25_zlvjkh.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140469/unnamed_21_cctmoc.webp"
+      ] 
+    },
     { id: 'munnar', title: "Grand Cliff Munnar", sub: "Munnar", rating: "★★★★★ Premium Hill Resort", img: "assets/grand_cliff_5.jpg", gallery: ["assets/grand_cliff_5.jpg", "assets/grand_cliff_1.jpg", "assets/grand_cliff_2.jpg", "assets/grand_cliff_3.jpg", "assets/grand_cliff_4.jpg"] },
     { id: 'alappuzha', title: "Uday Backwater Resort", sub: "Alappuzha", rating: "★★★★★ Luxury Backwater Resort", img: "https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_4_2_iitxkm.jpg", gallery: ["https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_4_2_iitxkm.jpg", "https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_5_1_vor5hr.jpg"] },
     { id: 'kovalam', title: "UDS Hotel & Resort", sub: "Kovalam", rating: "★★★★★ Luxury Beach Resort & Spa", img: "assets/uds_alleppey_1.jpg", gallery: ["assets/uds_alleppey_1.jpg", "assets/uds_alleppey_2.jpg", "assets/uds_alleppey_3.jpg", "assets/uds_alleppey_4.jpg"] },
-    { id: 'kochi', title: "Ramada Resort by Wyndham", sub: "Kochi", rating: "★★★★★ Luxury Waterfront Resort", img: "assets/ramada_kochi_2.jpg", gallery: ["assets/ramada_kochi_2.jpg", "assets/ramada_kochi_1.jpg", "assets/ramada_kochi_3.jpg"] }
+    { 
+      id: 'kochi', 
+      title: "Kochi Marriott Hotel", 
+      sub: "Kochi", 
+      rating: "★★★★★ Luxury City Resort & Spa", 
+      img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142007/unnamed_36_mjk3zl.webp", 
+      gallery: [
+        { url: "assets/ramada_kochi_2.jpg", title: "Ramada Resort by Wyndham" },
+        { url: "assets/ramada_kochi_1.jpg", title: "Ramada Resort by Wyndham" },
+        { url: "assets/ramada_kochi_3.jpg", title: "Ramada Resort by Wyndham" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142007/unnamed_36_mjk3zl.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_29_bd0f3a.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142006/unnamed_35_dmmf4t.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142006/unnamed_34_v9phzd.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142006/unnamed_33_vseznz.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_30_obnv4n.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142006/unnamed_32_ylc9jv.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_31_m8jodd.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_27_pfgcig.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142004/unnamed_23_ocyunk.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_28_zuugbm.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_26_yukjwv.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142004/unnamed_25_jk14rm.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_21_iuybkb.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142004/unnamed_24_neodsp.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_22_c6d38t.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_20_zxdolb.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_17_jltwvf.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_19_domwog.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142235/cokmd-arrival-4404-hor-clsc_cmhsoq.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142235/images_bh3kwp.jpg", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142235/Le_Meridien_Kochi_3_dbuizq.jpg", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142236/unnamed_1_ufbw3i.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142236/unnamed_3_ptctr0.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142265/unnamed_5_ccb8gd.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142266/unnamed_6_ooy6vg.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142266/unnamed_7_x1ejdt.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142266/unnamed_8_suksow.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142267/unnamed_9_gx5jrz.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142285/unnamed_26_ff3nrm.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142328/unnamed_27_xnfono.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142329/unnamed_28_g3dxpt.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142329/unnamed_29_gz05h5.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142329/unnamed_31_zdchw6.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142329/unnamed_32_x8c0qk.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142330/unnamed_33_yd3yas.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142330/unnamed_34_frdwd4.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142330/unnamed_35_qznmgr.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142331/unnamed_36_dvyf1c.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142331/unnamed_37_l3x0hc.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142332/unnamed_38_o4rzvn.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142332/unnamed_39_pv5w35.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142332/unnamed_41_q38jr6.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142333/unnamed_42_ddrmdn.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142333/unnamed_43_le4mhg.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143169/unnamed_1_skk7zs.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143169/unnamed_2_sf0dzu.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143170/unnamed_3_jftice.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143170/unnamed_4_lgmto3.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143171/unnamed_5_qxpr8p.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143191/unnamed_6_elrxu7.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143192/unnamed_7_pxutjr.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143193/unnamed_9_lqnbi1.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143193/unnamed_11_dn40kr.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143193/unnamed_8_saky69.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143194/unnamed_12_w7msrx.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143194/unnamed_13_rrrvgp.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143195/unnamed_14_zuglqo.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143195/unnamed_15_cdfl9u.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143196/unnamed_16_ffyyar.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143196/unnamed_17_vdpjd3.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143197/unnamed_18_zrro2q.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143198/unnamed_19_atisya.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143198/unnamed_bpch9v.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143491/unnamed_4_bqfq9c.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143492/unnamed_5_h6zj88.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143492/unnamed_6_evlz4t.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143493/unnamed_7_dfo7cb.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143493/unnamed_8_voz4do.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143494/unnamed_9_p0oeer.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143494/unnamed_10_x4jk8c.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143495/unnamed_11_e6eiuw.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143496/unnamed_12_my3wsp.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143496/unnamed_13_ze1nv0.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143497/unnamed_15_vhub6p.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143498/unnamed_16_wloyve.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143498/unnamed_17_znadxg.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143499/unnamed_18_ncqiyu.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143499/unnamed_19_ljywhf.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143500/unnamed_20_gni6lv.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143501/unnamed_21_ezbvfw.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143501/unnamed_22_efpipi.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143502/unnamed_23_fv30wx.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143503/unnamed_24_ycvbn1.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143503/unnamed_25_mxhxm3.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143504/unnamed_26_x335sk.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143504/unnamed_27_bdedte.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143505/unnamed_28_kburty.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143506/unnamed_29_wxgi9a.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143506/unnamed_enobwe.webp", title: "Ramada by Wyndham Kochi" }
+      ] 
+    },
+    { id: 'kumarakom', title: "Gokulam Grand Resort and Spa", sub: "Kumarakom", rating: "★★★★★ Luxury Resort & Spa", img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787139409/unnamed_1_gk4oyr.webp", gallery: ["https://res.cloudinary.com/ltevzqit/image/upload/v1787139409/unnamed_1_gk4oyr.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139755/image_s8pvsi.png", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_wfdowy.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_4_xcvdn9.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_2_qyfrbg.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_5_k01ls7.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_3_gyikzi.webp"] },
+    { 
+      id: 'wayanad', 
+      title: "Jeevess Retreat Wayanad", 
+      sub: "Wayanad", 
+      rating: "★★★★★ Luxury Retreat & Spa", 
+      img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_6_s1x2qo.webp", 
+      gallery: [
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_6_s1x2qo.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_9_owozwd.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_7_fvwegt.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_8_sfcyax.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_10_fccru2.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_11_kbrafx.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_12_idj4vy.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_14_kwrajg.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_15_fpohgk.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141689/unnamed_16_p9jlir.webp"
+      ] 
+    },
+    { 
+      id: 'vagamon', 
+      title: "Olga Resorts Vagamon", 
+      sub: "Vagamon", 
+      rating: "★★★★★ Premium Hill Resort", 
+      img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142892/unnamed_1_dgwmp0.webp", 
+      gallery: [
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142892/unnamed_1_dgwmp0.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142893/unnamed_2_mtlpwx.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142893/unnamed_4_bqxwl8.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142893/unnamed_3_tgtoci.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142894/unnamed_5_nxlgcp.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142894/unnamed_6_pypr7g.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142895/unnamed_7_ahj9sj.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142895/unnamed_8_s43g2j.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142896/unnamed_9_q5onno.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142897/unnamed_10_vwy2om.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142897/unnamed_11_o7chav.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142897/unnamed_12_mbcir4.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142898/unnamed_13_dwbljp.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142898/unnamed_14_i5swdc.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142899/unnamed_16_vkfhb5.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142900/unnamed_15_pihu5w.webp"
+      ] 
+    }
   ];
 
-  const categoriesList = ['thekkady', 'munnar', 'alappuzha', 'kovalam', 'kochi'];
+  const categoriesList = ['thekkady', 'munnar', 'alappuzha', 'kovalam', 'kochi', 'kumarakom', 'wayanad', 'vagamon'];
   let activeCategory = 'thekkady';
 
   // Track scroll position of hotels marquee
@@ -429,7 +612,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hotelNav) {
       const buttons = hotelNav.querySelectorAll('.dest-pill-btn');
       buttons.forEach(btn => {
-        if (btn.getAttribute('onclick').includes(category)) {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr && onclickAttr.includes(category)) {
           btn.classList.add('active');
         } else {
           btn.classList.remove('active');
@@ -478,15 +662,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Helper to append a set of cards
         const createCards = () => {
-          item.gallery.forEach((photoUrl, index) => {
+          item.gallery.forEach((photoItem, index) => {
+            const photoUrl = typeof photoItem === 'string' ? photoItem : photoItem.url;
+            const photoTitle = (typeof photoItem === 'object' && photoItem.title) ? photoItem.title : item.title;
+
             const card = document.createElement('div');
             card.className = 'dest-slide-card center-slide card-entering';
             card.setAttribute('data-hotel-id', item.id);
             
             card.innerHTML = `
-              <img src="${getCloudinaryUrl(photoUrl)}" alt="${item.title} - View ${index + 1}" class="hotel-img" style="display: block;">
+              <img src="${getCloudinaryUrl(photoUrl)}" alt="${photoTitle} - View ${index + 1}" class="hotel-img" style="display: block;">
               <div class="slide-card-content text-bottom">
-                  <h3>${item.title}</h3>
+                  <h3>${photoTitle}</h3>
               </div>
             `;
             track.appendChild(card);
@@ -585,7 +772,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (container) {
       const buttons = container.querySelectorAll('.dest-pill-btn');
       buttons.forEach(btn => {
-        if (btn.getAttribute('onclick').includes(category)) {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr && onclickAttr.includes(category)) {
           btn.classList.add('active');
         } else {
           btn.classList.remove('active');
@@ -760,8 +948,12 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryMainImg.classList.add('switching');
 
     setTimeout(() => {
-      galleryMainImg.src = getCloudinaryUrl(currentGalleryPhotos[currentPhotoIndex]);
-      galleryHotelName.textContent = currentHotelName;
+      const photoItem = currentGalleryPhotos[currentPhotoIndex];
+      const photoUrl = typeof photoItem === 'string' ? photoItem : photoItem.url;
+      const photoTitle = (typeof photoItem === 'object' && photoItem.title) ? photoItem.title : currentHotelName;
+
+      galleryMainImg.src = getCloudinaryUrl(photoUrl);
+      galleryHotelName.textContent = photoTitle;
       galleryPhotoCounter.textContent = `${currentPhotoIndex + 1} of ${currentGalleryPhotos.length}`;
 
       // Update active thumbnail
@@ -792,7 +984,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Build thumbnails dynamically
   const buildThumbnails = () => {
     galleryThumbnails.innerHTML = '';
-    currentGalleryPhotos.forEach((photoUrl, idx) => {
+    currentGalleryPhotos.forEach((photoItem, idx) => {
+      const photoUrl = typeof photoItem === 'string' ? photoItem : photoItem.url;
       const thumbDiv = document.createElement('div');
       thumbDiv.className = `gallery-thumb ${idx === 0 ? 'active' : ''}`;
       
