@@ -1,657 +1,1241 @@
-<!DOCTYPE html>
-<html lang="en">
+document.addEventListener('DOMContentLoaded', () => {
+  // Cloudinary Image URL Dynamic Prefix Resolver
+  const getCloudinaryUrl = (localPath) => {
+    if (!localPath) return "";
+    if (localPath.startsWith("http")) return localPath;
+    
+    // Explicit mappings for uploaded Cloudinary images:
+    if (localPath.includes("uds_alleppey_3.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/uds_alleppey_3_pqrxuw.jpg";
+    }
+    if (localPath.includes("founder.png")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/founder_xfuvif.jpg";
+    }
+    if (localPath.includes("blanket_days_2.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/blanket_days_2_rwa9ga.jpg";
+    }
+    if (localPath.includes("blanket_days_1.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/blanket_days_1_au1ybi.jpg";
+    }
+    if (localPath.includes("blanket_days_3.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/blanket_days_3_d6evn7.jpg";
+    }
+    if (localPath.includes("blanket_days_4.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/blanket_days_4_ytocek.jpg";
+    }
+    if (localPath.includes("blanket_days_5.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/blanket_days_5_a2f0yn.jpg";
+    }
+    if (localPath.includes("grand_cliff_5.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/grand_cliff_5_qvu8ac.jpg";
+    }
+    if (localPath.includes("grand_cliff_1.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/grand_cliff_1_djuj6m.jpg";
+    }
+    if (localPath.includes("grand_cliff_2.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/grand_cliff_2_b3xeqr.jpg";
+    }
+    if (localPath.includes("grand_cliff_3.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/grand_cliff_3_ddsoju.jpg";
+    }
+    if (localPath.includes("grand_cliff_4.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/grand_cliff_4_yts3vd.jpg";
+    }
+    if (localPath.includes("uds_alleppey_1.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/uds_alleppey_1_bhrmwi.jpg";
+    }
+    if (localPath.includes("uds_alleppey_2.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/uds_alleppey_2_rp3vsr.jpg";
+    }
+    if (localPath.includes("uds_alleppey_4.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/uds_alleppey_4_onmkuu.jpg";
+    }
+    if (localPath.includes("ramada_kochi_2.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/ramada_kochi_2_glcc9d.jpg";
+    }
+    if (localPath.includes("ramada_kochi_1.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/ramada_kochi_1_rqtczx.jpg";
+    }
+    if (localPath.includes("ramada_kochi_3.jpg")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/ramada_kochi_3_lorgg2.jpg";
+    }
+    if (localPath.includes("exp_spicetrails")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/exp_spicetrails_c2eqsx.jpg";
+    }
+    if (localPath.includes("exp_backwaters")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/exp_backwaters_ulreub.jpg";
+    }
+    if (localPath.includes("exp_kovalam")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/exp_kovalam_zhoxbx.jpg";
+    }
+    if (localPath.includes("exp_culture")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/exp_culture_xzvrsq.jpg";
+    }
+    if (localPath.includes("exp_ayurveda")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/exp_ayurveda_yjlgmg.jpg";
+    }
+    if (localPath.includes("exp_athirapally")) {
+      return "https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/exp_athirapally_pvfc1x.jpg";
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qnest Holidays | Luxury Kerala Tours</title>
-    <meta name="google-site-verification" content="sgu3BcdJ-YDamyrimU1ntPJ-kuJpf4Jgcj7MKoxXVsM" />
-    <meta name="description"
-        content="Bespoke luxury Kerala travel itineraries crafted by experts. Explore backwaters, beaches, Ayurveda wellness, and heritage trails with Qnest Holidays.">
-    <meta name="keywords"
-        content="Kerala tour packages, luxury travel Kerala, custom Kerala itinerary, Kerala backwaters resort, Munnar hill station, Qnest Holidays, luxury Kerala resort" />
-    <meta name="robots" content="index, follow" />
+    // Default fallback to local assets folder
+    return localPath;
+  };
 
-    <!-- Canonical Link -->
-    <link rel="canonical" href="https://qnestholidays.com/" />
+  // ==========================================
+  // 1. Sticky Navigation & Scroll States
+  // ==========================================
+  const header = document.querySelector('.header');
+  const scrollThreshold = 50;
 
-    <!-- Open Graph (Facebook / LinkedIn) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Qnest Holidays | Luxury Kerala Tours" />
-    <meta property="og:description"
-        content="Bespoke luxury Kerala travel itineraries crafted by experts. Explore backwaters, beaches, Ayurveda wellness, and heritage trails." />
-    <meta property="og:url" content="https://qnestholidays.com/" />
-    <meta property="og:site_name" content="Qnest Holidays" />
-    <meta property="og:image"
-        content="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/hero_bg_btdtb3.jpg" />
+  const handleScroll = () => {
+    if (window.scrollY > scrollThreshold) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  };
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Qnest Holidays | Luxury Kerala Tours" />
-    <meta name="twitter:description"
-        content="Bespoke luxury Kerala travel itineraries crafted by experts. Explore backwaters, beaches, Ayurveda wellness, and heritage trails." />
-    <meta name="twitter:image"
-        content="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/hero_bg_btdtb3.jpg" />
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Initial call on page load
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png" />
+  // ==========================================
+  // 2. Mobile Nav Drawer & Overlay Toggles
+  // ==========================================
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const mobileDrawer = document.getElementById('mobileNavDrawer');
+  const mobileOverlay = document.getElementById('mobileNavOverlay');
+  const navLinks = document.querySelectorAll('.nav-link, #mobileNavDrawer .btn');
 
-    <link rel="stylesheet" href="style.css?v=7.0">
-</head>
+  const toggleMobileNav = () => {
+    mobileToggle.classList.toggle('open');
+    mobileDrawer.classList.toggle('active');
+    mobileOverlay.classList.toggle('active');
+    
+    const mobileFloatingCta = document.getElementById('mobileFloatingCta');
+    if (mobileDrawer.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+      if (mobileFloatingCta) mobileFloatingCta.classList.add('nav-drawer-open');
+    } else {
+      document.body.style.overflow = '';
+      if (mobileFloatingCta) mobileFloatingCta.classList.remove('nav-drawer-open');
+    }
+  };
 
-<body>
+  if (mobileToggle && mobileOverlay) {
+    mobileToggle.addEventListener('click', toggleMobileNav);
+    mobileOverlay.addEventListener('click', toggleMobileNav);
+  }
 
-    <!-- 1. TRANSLUCENT HEADER & STICKY NAV -->
-    <header class="header" id="headerSection">
-        <div class="container">
-            <div class="header-inner">
-                <a href="#home" class="logo" id="headerLogo">Qnest Holidays</a>
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileDrawer && mobileDrawer.classList.contains('active')) {
+        toggleMobileNav();
+      }
+    });
+  });
 
-                <!-- Desktop Nav Links (Hidden on Tablet/Mobile) -->
-                <nav class="nav-menu" id="desktopNav">
-                    <ul class="nav-links">
-                        <li><a href="#home" class="nav-link active">Home</a></li>
-                        <li><a href="#about" class="nav-link">About</a></li>
-                        <li><a href="#hotels" class="nav-link">Hotels</a></li>
-                        <li><a href="#destinations" class="nav-link">Destinations</a></li>
-                        <li><a href="#enquire" class="nav-link">Contacts</a></li>
-                    </ul>
-                </nav>
+  // ==========================================
+  // 3. Smooth Scroll Anchor Offset Fix
+  // ==========================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        
+        const headerOffset = 90; // Standard offset for sticky nav bar space
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
 
-                <div class="header-cta" id="headerCta">
-                    <a href="#enquire" class="btn btn-outline">
-                        Plan My Trip
-                        <div class="btn-arrow-circle">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7 17L17 7M17 7H10M17 7V14" />
-                            </svg>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Mobile burger toggle -->
-                <button class="mobile-nav-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Navigation Drawer -->
-    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-    <div class="mobile-nav-drawer" id="mobileNavDrawer">
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#hotels" class="nav-link">Hotels</a></li>
-            <li><a href="#destinations" class="nav-link">Destinations</a></li>
-            <li><a href="#enquire" class="nav-link">Contacts</a></li>
-        </ul>
-        <a href="#enquire" class="btn btn-primary" style="margin-top: 2rem; width: 100%;">Plan My Trip</a>
-    </div>
-
-    <!-- 2. HERO SECTION -->
-    <section class="hero" id="home">
-        <div class="hero-bg">
-            <img src="https://res.cloudinary.com/ltevzqit/image/upload/v1784994515/hero_houseboat_bg_su2ut8.jpg"
-                alt="Traditional Kerala houseboat sailing in palm-fringed backwaters during golden hour" loading="eager"
-                fetchpriority="high">
-        </div>
-
-        <!-- Watermark text backdrop -->
-        <div class="watermark-bg">QNEST</div>
-
-        <div class="container">
-            <div class="hero-main-content">
-                <div class="about-tag-pill hero-tag-pill">
-                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"
-                        stroke-linecap="round">
-                        <path d="M5 12h14" />
-                    </svg>
-                    <span>Welcome to Qnest Holidays</span>
-                </div>
-                <h1 id="heroHeadline">Explore Beyond<br>The Map With Qnest Holidays</h1>
-            </div>
-
-            <!-- Hero bottom row -->
-            <div class="hero-bottom-grid" id="heroBottom">
-                <div class="hero-desc">
-                    <p>Bespoke premium journeys through God's Own Country – backwaters, spice hills, and coastline,
-                        designed around you.</p>
-                    <div class="hero-desc-row">
-                        <a href="#hotels" class="btn btn-hero-cta">
-                            Explore Luxury Hotels
-                            <div class="btn-arrow-circle">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M7 17L17 7M17 7H10M17 7V14" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. ABOUT SECTION ("Who We Are") -->
-    <section class="about fade-in-section" id="about">
-        <div class="container">
-            <div class="about-header-text">
-                <div class="about-tag-pill">
-                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"
-                        stroke-linecap="round">
-                        <path d="M5 12h14" />
-                    </svg>
-                    <span>Who We Are</span>
-                </div>
-                <h2>Since our journey began 7 years ago, our vision has remained the same: to redefine meaningful
-                    exploration. Today, Qnest Holidays is a trusted name in crafting curated luxury expeditions
-                    throughout God's Own Country.</h2>
-                <div class="about-cta-row">
-                    <a href="#enquire" class="btn btn-about-cta">
-                        MORE ABOUT US
-                        <div class="btn-arrow-circle">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7 17L17 7M17 7H10M17 7V14" />
-                            </svg>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- New Stats Bar Row (Screenshot Style) -->
-            <div class="about-stats-bar" id="aboutStatsBar">
-                <div class="about-stat-item">
-                    <h3 class="stat-number" data-target="7" data-suffix="+">0+</h3>
-                    <span>Years of Happy Customers</span>
-                </div>
-                <div class="about-stat-item">
-                    <h3 class="stat-number" data-target="100" data-suffix="%">0%</h3>
-                    <span>Curated Journeys</span>
-                </div>
-                <div class="about-stat-item">
-                    <h3 class="stat-number" data-target="5" data-suffix="★">0★</h3>
-                    <span>Star Premium Experience</span>
-                </div>
-                <div class="about-stat-item">
-                    <h3 class="stat-number" data-target="24" data-suffix="/7">0/7</h3>
-                    <span>Local Support</span>
-                </div>
-            </div>
-
-
-        </div>
-    </section>
-
-    <!-- 4. HOTELS SECTION (replacing original Destinations layout) -->
-    <section class="hotels fade-in-section" id="hotels">
-        <!-- Overlay backdrop layer for blurry transition -->
-        <div class="dest-bg-blur-layer" id="destBgBlurLayer"></div>
-        <div class="container dest-relative-container">
-            <!-- Centered Header Logo -->
-            <div class="dest-logo-wrapper">
-                <a href="#home" class="dest-logo">Qnest Holidays</a>
-            </div>
-
-            <div class="dest-header-centered">
-                <h2>Luxury Escapes</h2>
-                <p class="dest-subtitle-tagline">Discover Kerala's Finest Stays</p>
-            </div>
-
-            <div class="dest-pill-nav" id="hotelPillNav">
-                <div class="dest-pill-nav-backdrop" id="destPillBackdrop"></div>
-                <button class="dest-pill-btn active" onclick="filterDestinations('thekkady')">Thekkady</button>
-                <button class="dest-pill-btn" onclick="filterDestinations('munnar')">Munnar</button>
-                <button class="dest-pill-btn" onclick="filterDestinations('alappuzha')">Alappuzha</button>
-                <button class="dest-pill-btn" onclick="filterDestinations('kovalam')">Kovalam</button>
-                <button class="dest-pill-btn" onclick="filterDestinations('kochi')">Kochi</button>
-                <button class="dest-pill-btn" onclick="filterDestinations('kumarakom')">Kumarakom</button>
-                <button class="dest-pill-btn" onclick="filterDestinations('wayanad')">Wayanad</button>
-                <button class="dest-pill-btn" onclick="filterDestinations('vagamon')">Vagamon</button>
-            </div>
-        </div>
-
-        <!-- Slider Wrapper -->
-        <div class="dest-slider-container single-hotel">
-            <!-- Center Slide -->
-            <div class="dest-slide-card center-slide" data-category="thekkady">
-                <div class="hotel-image-placeholder">
-                    <div class="placeholder-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                            <circle cx="8.5" cy="8.5" r="1.5" />
-                            <polyline points="21 15 16 10 5 21" />
-                        </svg>
-                    </div>
-                    <div class="placeholder-text">Photo Awaiting Upload</div>
-                    <div class="placeholder-specs">1200 x 900 px (4:3 Ratio)</div>
-                </div>
-                <img src="" alt="" class="hotel-img" style="display: none;">
-                <div class="slide-card-content text-bottom">
-                    <h3>Blanket Days Resort and Spa Thekkady</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="why-us fade-in-section" id="whyUs">
-        <div class="container">
-            <div class="why-us-grid">
-                <!-- Right Features Checklist -->
-                <div class="why-us-content" id="whyUsContent">
-                    <span class="subtitle">Our Promise</span>
-                    <h2>The Qnest Difference</h2>
-
-                    <div class="why-us-list">
-                        <!-- Item 1 -->
-                        <div class="why-us-item">
-                            <div class="why-us-icon-wrapper">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
-                                        stroke="currentColor" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Seamless Booking</h3>
-                                <p>Secure your perfect trip with a streamlined, direct reservation process designed
-                                    completely around your pacing.</p>
-                            </div>
-                        </div>
-
-                        <!-- Item 2 -->
-                        <div class="why-us-item">
-                            <div class="why-us-icon-wrapper">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3"
-                                        stroke="currentColor" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>100% Vetted Accommodations</h3>
-                                <p>We do not guess. Our team has personally stayed in and approved every resort,
-                                    homestay, and room we book for you.</p>
-                            </div>
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div class="why-us-item">
-                            <div class="why-us-icon-wrapper">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                                        stroke="currentColor" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>24/7 Local Concierge</h3>
-                                <p>Enjoy absolute peace of mind with a dedicated local ground contact standing by for
-                                    adjustments on the go.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. BESPOKE CUSTOM JOURNEY SHOWCASE -->
-    <section class="packages fade-in-section" id="blueprints">
-        <div class="watermark-bg">BESPOKE</div>
-        <div class="container">
-            <div class="packages-header-row">
-                <div class="section-header">
-                    <span class="subtitle">Your Dream Trip</span>
-                    <h2>Crafted Just For You</h2>
-                </div>
-            </div>
-
-            <div class="custom-journey-showcase">
-                <div class="showcase-img-col">
-                    <img src="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/pkg_bloom_om2pqa.jpg"
-                        alt="Tailored Kerala Munnar Hills landscape">
-                    <div class="showcase-badge">100% Custom Curation</div>
-                </div>
-                <div class="showcase-content-col">
-                    <span class="showcase-tag">Crafted For You</span>
-                    <h3>Bespoke Kerala Travel Blueprints</h3>
-                    <p>We design bespoke Kerala journeys from scratch, handpicking every detail to perfectly match your
-                        unique pace and preferences.</p>
-
-                    <ul class="customization-features">
-                        <li>
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20 6L9 17l-5-5" />
-                            </svg>
-                            <div>
-                                <strong>Tailored Destinations</strong>
-                                <span>Combine hill stations, backwaters, beaches, and wildlife trails at your own
-                                    pace.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20 6L9 17l-5-5" />
-                            </svg>
-                            <div>
-                                <strong>Handpicked Stays</strong>
-                                <span>Choose from luxury treehouses, private pool villas, historic heritage bungalows,
-                                    or premium houseboats.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20 6L9 17l-5-5" />
-                            </svg>
-                            <div>
-                                <strong>Immersive Experiences</strong>
-                                <span>Integrate private cooking classes, spice plantation treks, Ayurveda wellness, or
-                                    cultural performances.</span>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="showcase-cta">
-                        <a href="#enquire" class="btn btn-primary">
-                            Design Your Custom Journey
-                            <div class="btn-arrow-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. DESTINATIONS SECTION (replacing Top Activities) -->
-    <section class="experience-banner fade-in-section" id="destinations">
-        <div class="container">
-            <div class="section-header" style="text-align: center; max-width: 750px; margin: 0 auto 2rem;">
-                <span class="subtitle">Destinations</span>
-                <h2>Explore Our Destinations</h2>
-                <p class="dest-subtitle-tagline" style="margin-top: 0.5rem; color: rgba(0, 0, 0, 0.6) !important;">
-                    Uncover Kerala's Hidden Treasures</p>
-            </div>
-
-            <!-- Pill Navigation for the 7 featured destinations -->
-            <div class="exp-pill-nav-container" style="text-align: center; margin-bottom: 2.5rem;">
-                <div class="dest-pill-nav" id="expPillNav">
-                    <div class="dest-pill-nav-backdrop" id="expPillBackdrop"></div>
-                    <button class="dest-pill-btn active" onclick="filterExperiences('munnar')">Munnar</button>
-                    <button class="dest-pill-btn" onclick="filterExperiences('alappuzha')">Alappuzha</button>
-                    <button class="dest-pill-btn" onclick="filterExperiences('trivandrum')">Trivandrum</button>
-                    <button class="dest-pill-btn" onclick="filterExperiences('thekkady')">Thekkady</button>
-                    <button class="dest-pill-btn" onclick="filterExperiences('kochi')">Kochi</button>
-                    <button class="dest-pill-btn" onclick="filterExperiences('kumarakom')">Kumarakom</button>
-                    <button class="dest-pill-btn" onclick="filterExperiences('athirapally')">Athirapally</button>
-                </div>
-            </div>
-
-            <div class="exp-banner-wrapper" id="expBannerWrapper">
-                <img id="expBannerImg"
-                    src="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/exp_spicetrails_c2eqsx.jpg"
-                    alt="Munnar Tea Plantations">
-
-                <!-- Floating white info box overlapping image -->
-                <div class="exp-banner-float-card" id="expBannerCard">
-                    <h3 id="expCardTitle">Munnar</h3>
-                    <h4 id="expCardSubtitle"
-                        style="font-family: Georgia, serif; font-style: italic; font-size: 1.05rem; color: var(--color-primary); margin-top: 0.25rem; margin-bottom: 0.75rem;">
-                        Tea Plantations</h4>
-                    <p id="expCardDesc">Wander through the lush, emerald tea plantations that blanket the misty hills of
-                        Munnar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        if (targetId === '#enquire') {
+          setTimeout(() => {
+            const firstInput = document.getElementById('fullName');
+            if (firstInput) firstInput.focus({ preventScroll: true });
+          }, 450);
+        }
+      }
+    });
+  });
 
 
 
+  // ==========================================
+  // 5. FAQ Accordion Toggle
+  // ==========================================
+  const faqItems = document.querySelectorAll('.faq-item');
 
+  faqItems.forEach(item => {
+    const questionBtn = item.querySelector('.faq-question-btn');
+    const answer = item.querySelector('.faq-answer');
 
-    <!-- 11. INQUIRY FORM SECTION -->
-    <section class="inquiry fade-in-section" id="enquire">
-        <div class="container">
-            <div class="inquiry-container">
-                <div class="inquiry-grid">
-                    <div class="inquiry-image-col">
-                        <img src="https://res.cloudinary.com/ltevzqit/image/upload/f_auto,q_auto/pkg_serenity_ozofr6.jpg"
-                            alt="Bespoke luxury Kerala travel by Qnest Holidays">
-                    </div>
-                    <div class="form-wrapper" id="formWrapper">
-                        <div class="section-header inquiry-header" style="text-align: left; margin-bottom: 2rem;">
-                            <span class="subtitle" style="margin-bottom: 0.5rem; display: inline-block;">Plan My
-                                Trip</span>
-                            <h2
-                                style="font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; font-weight: 700; margin-bottom: 0.5rem;">
-                                Begin your Journey with Qnest Holidays.</h2>
-                            <p style="font-size: 0.95rem; color: var(--color-text-muted);">Our specialist will contact
-                                you within 12 hours.</p>
-                        </div>
+    if (questionBtn && answer) {
+      questionBtn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('active');
+        
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-answer').style.maxHeight = '0px';
+          }
+        });
 
-                        <form id="inquiryForm" name="WebToLeads1346784000000558077"
-                            action="https://crm.zoho.in/crm/WebToLeadForm" method="POST" accept-charset="UTF-8"
-                            target="zoho_hidden_iframe" novalidate>
-                            <!-- Required Zoho CRM Web-to-Lead Hidden Fields -->
-                            <input type="text" style="display:none;" name="xnQsjsdp"
-                                value="deda7ddae052f76a0f480ff7d0b8f85ffbda84c23e6e1efc2289101c04b64ac9">
-                            <input type="hidden" name="zc_gad" id="zc_gad" value="">
-                            <input type="text" style="display:none;" name="xmIwtLD"
-                                value="025a8bed9f5081b4ec158be6f350e002d7f70ba7a35dd9e3865ba4a20f6b0cef309f8c3d90052a6cfa9d0d41219f8feb">
-                            <input type="text" style="display:none;" name="actionType" value="TGVhZHM=">
-                            <input type="text" style="display:none;" name="returnURL" value="null">
-                            <input type="text" style="display:none;" name="aG9uZXlwb3Q" value="">
+        if (isOpen) {
+          item.classList.remove('active');
+          answer.style.maxHeight = '0px';
+        } else {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    }
+  });
 
-                            <div class="form-grid">
-                                <!-- Full Name -->
-                                <div class="form-group full-width" id="groupName">
-                                    <label for="fullName" class="form-label">Full Name *</label>
-                                    <input type="text" id="fullName" name="Last Name" class="form-input"
-                                        placeholder="e.g. Sarah Mitchell" required maxlength="80">
-                                </div>
+  // ==========================================
+  // 6. Scroll-Driven Center-Viewport Fade-in Animations
+  // ==========================================
+  const animatedElements = document.querySelectorAll('.fade-in-section');
 
-                                <!-- Phone -->
-                                <div class="form-group full-width" id="groupPhone">
-                                    <label for="phone" class="form-label">Phone Number *</label>
-                                    <input type="tel" id="phone" name="Mobile" class="form-input"
-                                        placeholder="e.g. +91 90375 34857" required maxlength="30">
-                                </div>
+  const animationObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target); // Trigger once when near viewport center
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '-20% 0px -20% 0px' // Center trigger across all sections
+  });
 
-                                <!-- Submit button -->
-                                <div class="form-group full-width" id="groupSubmit" style="margin-top: 0.5rem;">
-                                    <button type="submit" id="formsubmit" class="btn btn-primary" style="width: 100%;">
-                                        Plan my journey
-                                        <div class="btn-arrow-icon">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M5 12h14M12 5l7 7-7 7" />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- Invisible Iframe for smooth background submission to Zoho CRM -->
-                        <iframe name="zoho_hidden_iframe" id="zoho_hidden_iframe" style="display:none;"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  animatedElements.forEach(el => {
+    animationObserver.observe(el);
+  });
 
+  // ==========================================
+  // 7. Inquiry Form Client Submission Handling
+  // ==========================================
+  const inquiryForm = document.getElementById('inquiryForm');
+  const successOverlay = document.getElementById('formSuccessOverlay');
+  const closeSuccessBtn = document.getElementById('closeSuccessBtn');
 
+  if (inquiryForm) {
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    <!-- Hotel Photo Gallery Lightbox Modal -->
-    <div class="gallery-overlay" id="galleryOverlay">
-        <button class="gallery-close-btn" id="galleryCloseBtn" aria-label="Close gallery">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
+      // Form validation (Name and Phone)
+      const nameInput = document.getElementById('fullName');
+      const phoneInput = document.getElementById('phone');
+      const name = nameInput?.value.trim() || '';
+      const phone = phoneInput?.value.trim() || '';
 
-        <div class="gallery-container">
-            <button class="gallery-nav-btn prev" id="galleryPrevBtn" aria-label="Previous photo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
+      if (!name || !phone) {
+        alert('Please fill out all required fields.');
+        if (!name && nameInput) nameInput.focus();
+        else if (!phone && phoneInput) phoneInput.focus();
+        return;
+      }
 
-            <div class="gallery-main-viewport">
-                <img src="" alt="Hotel Photo" class="gallery-main-img" id="galleryMainImg">
-                <div class="gallery-photo-info">
-                    <h3 id="galleryHotelName">Hotel Name</h3>
-                    <p id="galleryPhotoCounter">1 of 5</p>
-                </div>
-            </div>
+      // Validate phone number format (minimum 7 digits, maximum 18 characters including spaces, dashes, +, and brackets)
+      const phoneRegex = /^\+?[0-9\s\-()]{7,18}$/;
+      if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid phone number.');
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
 
-            <button class="gallery-nav-btn next" id="galleryNextBtn" aria-label="Next photo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
-        </div>
+      // Execute Zoho CRM mandatory validation check if available
+      if (typeof window.checkMandatory1346784000000558077 === 'function') {
+        const isValid = window.checkMandatory1346784000000558077();
+        if (!isValid) return;
+      }
 
-        <div class="gallery-thumbnails-wrapper">
-            <div class="gallery-thumbnails" id="galleryThumbnails">
-                <!-- Thumbnails injected dynamically -->
-            </div>
-        </div>
-    </div>
+      const formData = {
+        name,
+        phone
+      };
 
-    <!-- Form Success Dialog Modal Pop-up -->
-    <div class="form-success-overlay" id="formSuccessOverlay">
-        <div class="success-modal" id="successModal">
-            <div class="success-icon">
-                <svg viewBox="0 0 24 24">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3" stroke="currentColor" />
-                </svg>
-            </div>
-            <h3>Enquiry Received</h3>
-            <p>Thank you for reaching out to Qnest Holidays. A boutique travel planner will review your details and
-                connect with you via email or phone within 12 hours.</p>
-            <button class="btn btn-primary" id="closeSuccessBtn">Close Window</button>
-        </div>
-    </div>
+      console.log('Converting Enquiry to Zoho CRM Lead (Qnest Holidays):', formData);
 
-    <!-- 13. FOOTER (Translucent backdrop & watermark) -->
-    <footer class="footer" id="footer">
-        <!-- Blended image backdrop overlay -->
-        <div class="footer-backdrop">
-            <img src="assets/pkg_heritage.png" alt="Chinese fishing nets backwaters background image footer">
-        </div>
+      // Submit form directly to Zoho CRM WebToLead endpoint via target hidden iframe
+      HTMLFormElement.prototype.submit.call(inquiryForm);
 
-        <!-- Watermark brand text behind -->
-        <div class="watermark-bg">QNEST</div>
+      // Open Success Overlay popup
+      if (successOverlay) {
+        successOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
 
-        <div class="container">
-            <!-- Top contact row -->
-            <div class="footer-contact-row" id="footerContactRow">
-                <span>Phone: +91 90375 34857 | Email: info@qnestholidays.com</span>
-            </div>
+      inquiryForm.reset();
+    });
+  }
 
-            <!-- Main grids columns -->
-            <div class="footer-main-grid">
-                <div class="footer-links-col" id="footerNavCol1">
-                    <h4 class="footer-title">Main Page</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home" class="footer-link">Home</a></li>
-                        <li><a href="#about" class="footer-link">About</a></li>
-                        <li><a href="#hotels" class="footer-link">Hotels</a></li>
-                        <li><a href="#destinations" class="footer-link">Destinations</a></li>
-                    </ul>
-                </div>
+  if (closeSuccessBtn) {
+    closeSuccessBtn.addEventListener('click', () => {
+      successOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
 
-                <div class="footer-center-brand" id="footerCenterBrand">
-                    <h2>Best Service<br>At Your Service</h2>
-                    <a href="#enquire" class="btn btn-footer-cta">
-                        Begin Your Journey
-                        <div class="btn-arrow-circle">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7 17L17 7M17 7H10M17 7V14" />
-                            </svg>
-                        </div>
-                    </a>
-                </div>
+  if (successOverlay) {
+    successOverlay.addEventListener('click', (e) => {
+      if (e.target === successOverlay) {
+        successOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
 
-                <div class="footer-links-col" id="footerNavCol2">
-                    <h4 class="footer-title">Social Media</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://www.instagram.com/qnestholidays/?hl=en" target="_blank"
-                                rel="noopener noreferrer" class="footer-link">Instagram</a></li>
-                        <li><a href="#" class="footer-link">Facebook</a></li>
-                    </ul>
-                </div>
-            </div>
+  // ==========================================
+  // 8. Active Nav Link Scroll Spy
+  // ==========================================
+  const spySections = document.querySelectorAll('section[id]');
+  const desktopLinks = document.querySelectorAll('.nav-menu .nav-link');
 
-            <!-- Bottom copyright information -->
-            <div class="footer-bottom-row">
-                <p>&copy; 2026 Qnest Holidays. All rights reserved.</p>
-                <div class="footer-policy-links">
-                    <a href="#" style="margin-right: 1.5rem;">Privacy Policy</a>
-                    <a href="#">Terms & Conditions</a>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Floating Side/Center CTA Button (Morphs on scroll) -->
-        <div class="mobile-floating-cta" id="mobileFloatingCta">
-            <a href="#enquire" class="btn btn-floating-cta" aria-label="Plan My Trip">
-                <span class="cta-text">Plan My Trip</span>
-                <div class="btn-arrow-circle">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M7 17L17 7M17 7H10M17 7V14" />
-                    </svg>
-                </div>
-            </a>
-        </div>
+  const spyOptions = {
+    root: null,
+    rootMargin: '-40% 0px -55% 0px',
+    threshold: 0
+  };
 
-        <!-- Zoho CRM WebForm Mandatory Check & Analytics Tracking Scripts -->
-        <script>
-            window._wFa_ajax_will_be_replaced = false;
-            if (typeof window._wfa_fstprtcken === 'undefined') {
-                window._wfa_fstprtcken = {};
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        desktopLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, spyOptions);
+
+  spySections.forEach(section => {
+    spyObserver.observe(section);
+  });
+
+  // ==========================================
+  // 9. About Section mobile Cover Flow Slider (Safe fallback)
+  // ==========================================
+  const collageContainer = document.getElementById('aboutCollage');
+  if (collageContainer) {
+    const slides = collageContainer.children;
+    
+    const updateActiveSlide = () => {
+      if (window.innerWidth > 992) {
+        Array.from(slides).forEach(slide => {
+          slide.classList.remove('active-slide');
+        });
+        return;
+      }
+      
+      const containerCenter = collageContainer.scrollLeft + (collageContainer.offsetWidth / 2);
+      
+      let closestSlide = null;
+      let minDistance = Infinity;
+      
+      Array.from(slides).forEach(slide => {
+        const slideCenter = slide.offsetLeft + (slide.offsetWidth / 2);
+        const distance = Math.abs(containerCenter - slideCenter);
+        
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestSlide = slide;
+        }
+      });
+      
+      Array.from(slides).forEach(slide => {
+        if (slide === closestSlide) {
+          slide.classList.add('active-slide');
+        } else {
+          slide.classList.remove('active-slide');
+        }
+      });
+    };
+    
+    collageContainer.addEventListener('scroll', () => {
+      window.requestAnimationFrame(updateActiveSlide);
+    });
+    
+    window.addEventListener('resize', updateActiveSlide);
+    setTimeout(updateActiveSlide, 300);
+  }
+
+  // ==========================================
+  // 10. Hotels Section Filter & Slider (11 Destinations Cover Flow)
+  // ==========================================
+  const hotelData = [
+    { 
+      id: 'thekkady', 
+      title: "Greenwoods Resort Thekkady", 
+      sub: "Thekkady", 
+      rating: "★★★★★ Luxury Resort & Spa", 
+      img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_41_znm0ng.webp", 
+      gallery: [
+        { url: "assets/blanket_days_2.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        { url: "assets/blanket_days_1.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        { url: "assets/blanket_days_3.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        { url: "assets/blanket_days_4.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        { url: "assets/blanket_days_5.jpg", title: "Blanket Days Resort and Spa Thekkady" },
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_41_znm0ng.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140474/unnamed_43_lg9qc6.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140474/unnamed_44_uowrle.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_42_hmwikq.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_38_zxwpfn.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_40_rjarts.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140473/unnamed_39_avlx7y.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140472/unnamed_37_i1ykk5.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140472/unnamed_36_owcrd1.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_34_gtmqo2.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_35_q4eutn.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_33_pw6ny0.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_32_xnlhwv.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140471/unnamed_28_faayg2.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_30_yhzkf3.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_29_c13aq5.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_31_dijxas.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_27_xjx38o.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_26_wilhtc.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140469/unnamed_20_pkw3hd.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140470/unnamed_22_sjqham.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140469/unnamed_24_gnyf2w.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140469/unnamed_25_zlvjkh.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787140469/unnamed_21_cctmoc.webp"
+      ] 
+    },
+    { id: 'munnar', title: "Grand Cliff Munnar", sub: "Munnar", rating: "★★★★★ Premium Hill Resort", img: "assets/grand_cliff_5.jpg", gallery: ["assets/grand_cliff_5.jpg", "assets/grand_cliff_1.jpg", "assets/grand_cliff_2.jpg", "assets/grand_cliff_3.jpg", "assets/grand_cliff_4.jpg"] },
+    { id: 'alappuzha', title: "Uday Backwater Resort", sub: "Alappuzha", rating: "★★★★★ Luxury Backwater Resort", img: "https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_4_2_iitxkm.jpg", gallery: ["https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_4_2_iitxkm.jpg", "https://res.cloudinary.com/ltevzqit/image/upload/v1785039903/Uday_Backwater_view_5_1_vor5hr.jpg"] },
+    { id: 'kovalam', title: "UDS Hotel & Resort", sub: "Kovalam", rating: "★★★★★ Luxury Beach Resort & Spa", img: "assets/uds_alleppey_1.jpg", gallery: ["assets/uds_alleppey_1.jpg", "assets/uds_alleppey_2.jpg", "assets/uds_alleppey_3.jpg", "assets/uds_alleppey_4.jpg"] },
+    { 
+      id: 'kochi', 
+      title: "Kochi Marriott Hotel", 
+      sub: "Kochi", 
+      rating: "★★★★★ Luxury City Resort & Spa", 
+      img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142007/unnamed_36_mjk3zl.webp", 
+      gallery: [
+        { url: "assets/ramada_kochi_2.jpg", title: "Ramada Resort by Wyndham" },
+        { url: "assets/ramada_kochi_1.jpg", title: "Ramada Resort by Wyndham" },
+        { url: "assets/ramada_kochi_3.jpg", title: "Ramada Resort by Wyndham" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142007/unnamed_36_mjk3zl.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_29_bd0f3a.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142006/unnamed_35_dmmf4t.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142006/unnamed_34_v9phzd.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142006/unnamed_33_vseznz.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_30_obnv4n.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142006/unnamed_32_ylc9jv.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_31_m8jodd.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_27_pfgcig.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142004/unnamed_23_ocyunk.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_28_zuugbm.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142005/unnamed_26_yukjwv.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142004/unnamed_25_jk14rm.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_21_iuybkb.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142004/unnamed_24_neodsp.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_22_c6d38t.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_20_zxdolb.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_17_jltwvf.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142003/unnamed_19_domwog.webp", title: "Kochi Marriott Hotel" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142235/cokmd-arrival-4404-hor-clsc_cmhsoq.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142235/images_bh3kwp.jpg", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142235/Le_Meridien_Kochi_3_dbuizq.jpg", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142236/unnamed_1_ufbw3i.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142236/unnamed_3_ptctr0.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142265/unnamed_5_ccb8gd.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142266/unnamed_6_ooy6vg.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142266/unnamed_7_x1ejdt.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142266/unnamed_8_suksow.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142267/unnamed_9_gx5jrz.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142285/unnamed_26_ff3nrm.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142328/unnamed_27_xnfono.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142329/unnamed_28_g3dxpt.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142329/unnamed_29_gz05h5.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142329/unnamed_31_zdchw6.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142329/unnamed_32_x8c0qk.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142330/unnamed_33_yd3yas.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142330/unnamed_34_frdwd4.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142330/unnamed_35_qznmgr.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142331/unnamed_36_dvyf1c.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142331/unnamed_37_l3x0hc.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142332/unnamed_38_o4rzvn.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142332/unnamed_39_pv5w35.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142332/unnamed_41_q38jr6.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142333/unnamed_42_ddrmdn.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142333/unnamed_43_le4mhg.webp", title: "Le Meridien Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143169/unnamed_1_skk7zs.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143169/unnamed_2_sf0dzu.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143170/unnamed_3_jftice.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143170/unnamed_4_lgmto3.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143171/unnamed_5_qxpr8p.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143191/unnamed_6_elrxu7.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143192/unnamed_7_pxutjr.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143193/unnamed_9_lqnbi1.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143193/unnamed_11_dn40kr.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143193/unnamed_8_saky69.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143194/unnamed_12_w7msrx.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143194/unnamed_13_rrrvgp.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143195/unnamed_14_zuglqo.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143195/unnamed_15_cdfl9u.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143196/unnamed_16_ffyyar.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143196/unnamed_17_vdpjd3.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143197/unnamed_18_zrro2q.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143198/unnamed_19_atisya.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143198/unnamed_bpch9v.webp", title: "Olive Downtown Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143491/unnamed_4_bqfq9c.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143492/unnamed_5_h6zj88.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143492/unnamed_6_evlz4t.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143493/unnamed_7_dfo7cb.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143493/unnamed_8_voz4do.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143494/unnamed_9_p0oeer.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143494/unnamed_10_x4jk8c.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143495/unnamed_11_e6eiuw.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143496/unnamed_12_my3wsp.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143496/unnamed_13_ze1nv0.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143497/unnamed_15_vhub6p.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143498/unnamed_16_wloyve.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143498/unnamed_17_znadxg.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143499/unnamed_18_ncqiyu.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143499/unnamed_19_ljywhf.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143500/unnamed_20_gni6lv.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143501/unnamed_21_ezbvfw.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143501/unnamed_22_efpipi.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143502/unnamed_23_fv30wx.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143503/unnamed_24_ycvbn1.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143503/unnamed_25_mxhxm3.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143504/unnamed_26_x335sk.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143504/unnamed_27_bdedte.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143505/unnamed_28_kburty.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143506/unnamed_29_wxgi9a.webp", title: "Ramada by Wyndham Kochi" },
+        { url: "https://res.cloudinary.com/ltevzqit/image/upload/v1787143506/unnamed_enobwe.webp", title: "Ramada by Wyndham Kochi" }
+      ] 
+    },
+    { id: 'kumarakom', title: "Gokulam Grand Resort and Spa", sub: "Kumarakom", rating: "★★★★★ Luxury Resort & Spa", img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787139409/unnamed_1_gk4oyr.webp", gallery: ["https://res.cloudinary.com/ltevzqit/image/upload/v1787139409/unnamed_1_gk4oyr.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139755/image_s8pvsi.png", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_wfdowy.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_4_xcvdn9.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_2_qyfrbg.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_5_k01ls7.webp", "https://res.cloudinary.com/ltevzqit/image/upload/v1787139753/unnamed_3_gyikzi.webp"] },
+    { 
+      id: 'wayanad', 
+      title: "Jeevess Retreat Wayanad", 
+      sub: "Wayanad", 
+      rating: "★★★★★ Luxury Retreat & Spa", 
+      img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_6_s1x2qo.webp", 
+      gallery: [
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_6_s1x2qo.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_9_owozwd.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_7_fvwegt.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141687/unnamed_8_sfcyax.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_10_fccru2.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_11_kbrafx.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_12_idj4vy.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_14_kwrajg.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141688/unnamed_15_fpohgk.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787141689/unnamed_16_p9jlir.webp"
+      ] 
+    },
+    { 
+      id: 'vagamon', 
+      title: "Olga Resorts Vagamon", 
+      sub: "Vagamon", 
+      rating: "★★★★★ Premium Hill Resort", 
+      img: "https://res.cloudinary.com/ltevzqit/image/upload/v1787142892/unnamed_1_dgwmp0.webp", 
+      gallery: [
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142892/unnamed_1_dgwmp0.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142893/unnamed_2_mtlpwx.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142893/unnamed_4_bqxwl8.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142893/unnamed_3_tgtoci.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142894/unnamed_5_nxlgcp.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142894/unnamed_6_pypr7g.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142895/unnamed_7_ahj9sj.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142895/unnamed_8_s43g2j.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142896/unnamed_9_q5onno.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142897/unnamed_10_vwy2om.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142897/unnamed_11_o7chav.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142897/unnamed_12_mbcir4.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142898/unnamed_13_dwbljp.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142898/unnamed_14_i5swdc.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142899/unnamed_16_vkfhb5.webp",
+        "https://res.cloudinary.com/ltevzqit/image/upload/v1787142900/unnamed_15_pihu5w.webp"
+      ] 
+    }
+  ];
+
+  const categoriesList = ['thekkady', 'munnar', 'alappuzha', 'kovalam', 'kochi', 'kumarakom', 'wayanad', 'vagamon'];
+  let activeCategory = 'thekkady';
+
+  // Track scroll position of hotels marquee
+  let expectedScrollLeft = 0;
+  let currentScrollPosition = 0; // Float scroll accumulator to avoid sub-pixel rounding freeze on mobile
+  
+  // Track classes for 4 cards (left, center, right, and hidden buffer)
+  let slideClasses = ['left-slide', 'center-slide', 'right-slide', 'hidden-right'];
+  let isTransitioning = false;
+  let destTransitionTimeout = null;
+  let mobileActiveIndex = 0; // Track active index on mobile snap carousel
+
+  // Sync both sets of pill tab backdrops
+  function syncBackdropForContainer(containerId, backdropId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const backdrop = document.getElementById(backdropId);
+    const activeBtn = container.querySelector('.dest-pill-btn.active');
+    
+    if (backdrop && activeBtn) {
+      backdrop.style.left = `${activeBtn.offsetLeft}px`;
+      backdrop.style.width = `${activeBtn.offsetWidth}px`;
+    }
+  }
+
+  function syncAllBackdrops() {
+    syncBackdropForContainer('hotelPillNav', 'destPillBackdrop');
+    syncBackdropForContainer('expPillNav', 'expPillBackdrop');
+  }
+
+  window.filterDestinations = function(category) {
+    activeCategory = category;
+
+    // Reset transition states immediately to clear any running shift animations
+    if (destTransitionTimeout) {
+      clearTimeout(destTransitionTimeout);
+      destTransitionTimeout = null;
+    }
+    isTransitioning = false;
+
+    // Update active tab styling
+    const hotelNav = document.getElementById('hotelPillNav');
+    if (hotelNav) {
+      const buttons = hotelNav.querySelectorAll('.dest-pill-btn');
+      buttons.forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr && onclickAttr.includes(category)) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll the selected tab into view horizontally on mobile
+      const activeBtn = hotelNav.querySelector('.dest-pill-btn.active');
+      if (activeBtn) {
+        const containerWidth = hotelNav.clientWidth;
+        const btnWidth = activeBtn.clientWidth;
+        const btnLeft = activeBtn.offsetLeft;
+        hotelNav.scrollTo({
+          left: btnLeft - (containerWidth / 2) + (btnWidth / 2),
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Sync sliding backdrop pill background position
+    syncAllBackdrops();
+
+    const sliderContainer = document.querySelector('.dest-slider-container.single-hotel');
+    if (!sliderContainer) return;
+
+    const slides = sliderContainer.querySelectorAll('.dest-slide-card');
+
+    // 1. Trigger exit shrink-down animation on current cards
+    slides.forEach(slide => {
+      slide.classList.remove('card-entering');
+      slide.classList.add('card-switching');
+    });
+
+    destTransitionTimeout = setTimeout(() => {
+      sliderContainer.innerHTML = ''; // Clear existing cards
+      sliderContainer.scrollLeft = 0; // Reset scroll position to beginning
+      expectedScrollLeft = 0;
+      currentScrollPosition = 0;
+
+      const item = hotelData.find(h => h.id === category);
+      if (item && item.gallery && item.gallery.length > 0) {
+        // Create marquee track container
+        const track = document.createElement('div');
+        track.className = 'hotel-marquee-track';
+        sliderContainer.appendChild(track);
+
+        // Helper to append a set of cards
+        const createCards = () => {
+          item.gallery.forEach((photoItem, index) => {
+            const photoUrl = typeof photoItem === 'string' ? photoItem : photoItem.url;
+            const photoTitle = (typeof photoItem === 'object' && photoItem.title) ? photoItem.title : item.title;
+
+            const card = document.createElement('div');
+            card.className = 'dest-slide-card center-slide card-entering';
+            card.setAttribute('data-hotel-id', item.id);
+            
+            card.innerHTML = `
+              <img src="${getCloudinaryUrl(photoUrl)}" alt="${photoTitle} - View ${index + 1}" class="hotel-img" style="display: block;">
+              <div class="slide-card-content text-bottom">
+                  <h3>${photoTitle}</h3>
+              </div>
+            `;
+            track.appendChild(card);
+          });
+        };
+
+        // Create one set of cards (no duplication)
+        createCards();
+        updateSubHotelNav(item);
+      }
+    }, 140);
+  };
+
+  // Helper to build sub-hotel navigation buttons for hotels under the active destination
+  function updateSubHotelNav(item) {
+    const container = document.getElementById('subHotelNav');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!item || !item.gallery || item.gallery.length === 0) return;
+
+    // Extract unique hotel titles in order of appearance in gallery
+    const hotels = [];
+    item.gallery.forEach((photoItem, index) => {
+      const title = (typeof photoItem === 'object' && photoItem.title) ? photoItem.title : item.title;
+      if (!hotels.some(h => h.title === title)) {
+        hotels.push({
+          title: title,
+          firstIndex: index
+        });
+      }
+    });
+
+    // Render sub-pill button for each hotel
+    hotels.forEach((h, i) => {
+      const btn = document.createElement('button');
+      btn.className = `sub-hotel-btn ${i === 0 ? 'active' : ''}`;
+      btn.setAttribute('type', 'button');
+      btn.innerHTML = `
+        <svg class="sub-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"></path>
+          <path d="M9 7h1"></path><path d="M9 11h1"></path><path d="M9 15h1"></path>
+          <path d="M14 7h1"></path><path d="M14 11h1"></path><path d="M14 15h1"></path>
+          <path d="M10 21v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4"></path>
+        </svg>
+        <span>${h.title}</span>
+      `;
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        container.querySelectorAll('.sub-hotel-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const sliderContainer = document.querySelector('.dest-slider-container.single-hotel');
+        if (sliderContainer) {
+          const cards = sliderContainer.querySelectorAll('.dest-slide-card');
+          if (cards[h.firstIndex]) {
+            const cardLeft = cards[h.firstIndex].offsetLeft;
+            sliderContainer.scrollTo({
+              left: cardLeft,
+              behavior: 'smooth'
+            });
+            currentScrollPosition = cardLeft;
+            expectedScrollLeft = cardLeft;
+          }
+        }
+      });
+
+      container.appendChild(btn);
+    });
+  }
+
+  // ==========================================
+  // 11. Destinations Section (Activity Switcher)
+  // ==========================================
+  const expData = {
+    munnar: {
+      title: "Munnar",
+      sub: "Tea Plantations",
+      desc: "Wander through the lush, emerald tea plantations that blanket the misty hills of Munnar.",
+      img: "assets/exp_spicetrails.png"
+    },
+    alappuzha: {
+      title: "Alappuzha",
+      sub: "Houseboat Cruise",
+      desc: "Drift along the tranquil backwaters in a traditional luxury houseboat, experiencing the serene rhythm of Alappuzha.",
+      img: "assets/exp_backwaters.png"
+    },
+    trivandrum: {
+      title: "Trivandrum",
+      sub: "Beach Holiday",
+      desc: "Relax on the sun-kissed golden sands and soak in the vibrant coastal energy of Trivandrum's pristine beaches.",
+      img: "assets/exp_kovalam.png"
+    },
+    thekkady: {
+      title: "Thekkady",
+      sub: "Ziplining & Adventure",
+      desc: "Soar through the mountain canopies and experience a thrilling bird's-eye view of spice valleys and dense jungle foliage.",
+      img: "assets/blanket_days_1.jpg"
+    },
+    kochi: {
+      title: "Kochi",
+      sub: "Kathakali & Culture",
+      desc: "Witness the majestic and colorful storytelling of a classical Kathakali dance performance, reflecting Kerala's deep artistic heritage.",
+      img: "assets/exp_culture.png"
+    },
+    kumarakom: {
+      title: "Kumarakom",
+      sub: "Ayurveda & Wellness",
+      desc: "Rejuvenate your body and mind with authentic, holistic Ayurvedic spa treatments overlooking the peaceful Vembanad Lake.",
+      img: "assets/exp_ayurveda.png"
+    },
+    athirapally: {
+      title: "Athirapally",
+      sub: "Waterfalls & Wildlife",
+      desc: "Witness the majestic power of the Athirapally waterfalls cascading through dense, untouched tropical forests.",
+      img: "assets/exp_athirapally.png"
+    }
+  };
+
+  // Autoplay configuration for experiences
+  const expCategories = ['munnar', 'alappuzha', 'trivandrum', 'thekkady', 'kochi', 'kumarakom', 'athirapally'];
+  let currentExpIndex = 0;
+  let expAutoplayTimer = null;
+
+  function startExpAutoplay() {
+    stopExpAutoplay();
+    expAutoplayTimer = setInterval(() => {
+      currentExpIndex = (currentExpIndex + 1) % expCategories.length;
+      window.filterExperiences(expCategories[currentExpIndex]);
+    }, 6000);
+  }
+
+  function stopExpAutoplay() {
+    if (expAutoplayTimer) {
+      clearInterval(expAutoplayTimer);
+      expAutoplayTimer = null;
+    }
+  }
+
+  window.filterExperiences = function(category) {
+    const data = expData[category];
+    if (!data) return;
+
+    // Sync active index
+    const catIndex = expCategories.indexOf(category);
+    if (catIndex !== -1) {
+      currentExpIndex = catIndex;
+    }
+
+    // Restart autoplay timer to reset the 6s countdown on manual click
+    startExpAutoplay();
+
+    // Update active button styling in experience section
+    const container = document.getElementById('expPillNav');
+    if (container) {
+      const buttons = container.querySelectorAll('.dest-pill-btn');
+      buttons.forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr && onclickAttr.includes(category)) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll the selected tab into view horizontally on mobile
+      const activeBtn = container.querySelector('.dest-pill-btn.active');
+      if (activeBtn) {
+        const containerWidth = container.clientWidth;
+        const btnWidth = activeBtn.clientWidth;
+        const btnLeft = activeBtn.offsetLeft;
+        container.scrollTo({
+          left: btnLeft - (containerWidth / 2) + (btnWidth / 2),
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Sync sliding backdrop pill background position
+    syncAllBackdrops();
+
+    // Dynamic fade transition for experience content (smoother, slower fade & slide)
+    const imgEl = document.getElementById('expBannerImg');
+    const cardEl = document.getElementById('expBannerCard');
+    const titleEl = document.getElementById('expCardTitle');
+    const subEl = document.getElementById('expCardSubtitle');
+    const descEl = document.getElementById('expCardDesc');
+
+    if (imgEl && cardEl) {
+      imgEl.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+      cardEl.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+
+      imgEl.style.opacity = '0';
+      cardEl.style.opacity = '0';
+      cardEl.style.transform = 'translateY(15px)';
+
+      setTimeout(() => {
+        imgEl.src = getCloudinaryUrl(data.img);
+        if (titleEl) titleEl.textContent = data.title;
+        if (subEl) subEl.textContent = data.sub;
+        if (descEl) descEl.textContent = data.desc;
+
+        imgEl.style.opacity = '1';
+        cardEl.style.opacity = '1';
+        cardEl.style.transform = 'translateY(0)';
+      }, 350);
+    }
+  };
+
+  // Pause autoplay when hovering over the experiences block
+  const expBannerWrapper = document.getElementById('expBannerWrapper');
+  if (expBannerWrapper) {
+    expBannerWrapper.addEventListener('mouseenter', stopExpAutoplay);
+    expBannerWrapper.addEventListener('mouseleave', startExpAutoplay);
+  }
+
+  // ==========================================
+  // 12. Number Counter Scroll Animation
+  // ==========================================
+  const statsContainer = document.getElementById('aboutStatsBar');
+  if (statsContainer) {
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const statNumbers = entry.target.querySelectorAll('.stat-number');
+          statNumbers.forEach(el => {
+            const target = parseFloat(el.getAttribute('data-target'));
+            const suffix = el.getAttribute('data-suffix') || '';
+            const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+            const duration = 2500; // 2.5 seconds smooth duration
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+              const elapsedTime = currentTime - startTime;
+              const progress = Math.min(elapsedTime / duration, 1);
+              const easeOut = 1 - Math.pow(1 - progress, 4);
+              const currentVal = target * easeOut;
+
+              el.textContent = currentVal.toFixed(decimals) + suffix;
+
+              if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+              } else {
+                el.textContent = target.toFixed(decimals) + suffix;
+              }
             }
-            window._wfa_fstprtcken[1346784000000558077] = true;
 
-            function checkMandatory1346784000000558077() {
-                var mndFileds = new Array('Last Name', 'Mobile');
-                var fldLangVal = new Array('Name', 'WhatsApp Number');
-                for (var i = 0; i < mndFileds.length; i++) {
-                    var fieldObj = document.forms['WebToLeads1346784000000558077'][mndFileds[i]];
-                    if (fieldObj) {
-                        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
-                            alert(fldLangVal[i] + ' cannot be empty.');
-                            fieldObj.focus();
-                            return false;
-                        }
-                    }
-                }
-                var urlparams = new URLSearchParams(window.location.search);
-                if (urlparams.has('service') && (urlparams.get('service') === 'smarturl')) {
-                    var webform = document.getElementById('inquiryForm');
-                    var service = urlparams.get('service');
-                    var smarturlfield = document.createElement('input');
-                    smarturlfield.setAttribute('type', 'hidden');
-                    smarturlfield.setAttribute('value', service);
-                    smarturlfield.setAttribute('name', 'service');
-                    if (webform) webform.appendChild(smarturlfield);
-                }
-                return true;
-            }
-        </script>
-        <script id="wf_anal"
-            src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=51dd9048f66c8e42a204010be3daf06a960253a86a31c9efdc2d0b42080d137a851f4e8a1fb1bf0031aaca3f6d6fbfa7gidc99c57f2b7949cd837bbdeb29ac33dc5f33abb2d0a0d7f172b246a7c29830a50gid0aea06f5bc78fed69ab459207b18ef6b28b0bafddc39fb9cd635960485dccfd1gid828b65fa7bc1a16730ddbd238c6b1f4a0a1d8e202bcdb6bd331325cb72d8a948&tw=e95246891435f8ee2e82ac86128a38918e24a090ed8894637f2f5ba4e87cff8a&version=v2"></script>
-        <script src="app.js?v=1.1"></script>
-</body>
+            requestAnimationFrame(updateCounter);
+          });
+          observer.unobserve(entry.target); // Run once when scrolled into view
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px 50px 0px'
+    });
 
-</html>
+    counterObserver.observe(statsContainer);
+  }
+
+  // ==========================================
+  // 13. Mobile Floating CTA Multi-State Scroll Handler
+  // ==========================================
+  const mobileFloatingCta = document.getElementById('mobileFloatingCta');
+  const heroSection = document.getElementById('home');
+  const destinationsSection = document.getElementById('destinations');
+
+  if (mobileFloatingCta && heroSection) {
+    const handleScrollFloatingCta = () => {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      const destinationsBottom = destinationsSection ? destinationsSection.getBoundingClientRect().bottom : 9999;
+
+      if (heroBottom > 120) {
+        mobileFloatingCta.classList.remove('state-center', 'state-side');
+      }
+      else if (destinationsBottom <= 150) {
+        mobileFloatingCta.classList.remove('state-center');
+        mobileFloatingCta.classList.add('state-side');
+      }
+      else {
+        mobileFloatingCta.classList.remove('state-side');
+        mobileFloatingCta.classList.add('state-center');
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollFloatingCta, { passive: true });
+    handleScrollFloatingCta();
+  }
+
+  // ==========================================
+  // 14. Hotel Photo Gallery Lightbox Modal Logic
+  // ==========================================
+  const galleryOverlay = document.getElementById('galleryOverlay');
+  const galleryMainImg = document.getElementById('galleryMainImg');
+  const galleryHotelName = document.getElementById('galleryHotelName');
+  const galleryPhotoCounter = document.getElementById('galleryPhotoCounter');
+  const galleryThumbnails = document.getElementById('galleryThumbnails');
+  const galleryCloseBtn = document.getElementById('galleryCloseBtn');
+  const galleryPrevBtn = document.getElementById('galleryPrevBtn');
+  const galleryNextBtn = document.getElementById('galleryNextBtn');
+
+  let currentGalleryPhotos = [];
+  let currentPhotoIndex = 0;
+  let currentHotelName = "";
+
+  const openGallery = (hotel) => {
+    if (!hotel.gallery || hotel.gallery.length === 0) return;
+
+    currentGalleryPhotos = hotel.gallery;
+    currentPhotoIndex = 0;
+    currentHotelName = hotel.title;
+
+    updateGalleryView();
+
+    galleryOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent body scroll
+    
+    // Auto-focus overlay for keyboard interactions
+    galleryOverlay.focus();
+  };
+
+  const closeGallery = () => {
+    galleryOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scroll
+  };
+
+  const updateGalleryView = () => {
+    if (currentGalleryPhotos.length === 0) return;
+
+    // Apply switching transition to slide main image out
+    galleryMainImg.classList.add('switching');
+
+    setTimeout(() => {
+      const photoItem = currentGalleryPhotos[currentPhotoIndex];
+      const photoUrl = typeof photoItem === 'string' ? photoItem : photoItem.url;
+      const photoTitle = (typeof photoItem === 'object' && photoItem.title) ? photoItem.title : currentHotelName;
+
+      galleryMainImg.src = getCloudinaryUrl(photoUrl);
+      galleryHotelName.textContent = photoTitle;
+      galleryPhotoCounter.textContent = `${currentPhotoIndex + 1} of ${currentGalleryPhotos.length}`;
+
+      // Update active thumbnail
+      const thumbs = galleryThumbnails.querySelectorAll('.gallery-thumb');
+      thumbs.forEach((thumb, idx) => {
+        if (idx === currentPhotoIndex) {
+          thumb.classList.add('active');
+          thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          thumb.classList.remove('active');
+        }
+      });
+
+      galleryMainImg.classList.remove('switching');
+    }, 150);
+  };
+
+  const showNextPhoto = () => {
+    currentPhotoIndex = (currentPhotoIndex + 1) % currentGalleryPhotos.length;
+    updateGalleryView();
+  };
+
+  const showPrevPhoto = () => {
+    currentPhotoIndex = (currentPhotoIndex - 1 + currentGalleryPhotos.length) % currentGalleryPhotos.length;
+    updateGalleryView();
+  };
+
+  // Build thumbnails dynamically
+  const buildThumbnails = () => {
+    galleryThumbnails.innerHTML = '';
+    currentGalleryPhotos.forEach((photoItem, idx) => {
+      const photoUrl = typeof photoItem === 'string' ? photoItem : photoItem.url;
+      const thumbDiv = document.createElement('div');
+      thumbDiv.className = `gallery-thumb ${idx === 0 ? 'active' : ''}`;
+      
+      const thumbImg = document.createElement('img');
+      thumbImg.src = getCloudinaryUrl(photoUrl);
+      thumbImg.alt = `Thumbnail ${idx + 1}`;
+      
+      thumbDiv.appendChild(thumbImg);
+      thumbDiv.addEventListener('click', () => {
+        if (idx !== currentPhotoIndex) {
+          currentPhotoIndex = idx;
+          updateGalleryView();
+        }
+      });
+      galleryThumbnails.appendChild(thumbDiv);
+    });
+  };
+
+  // Modal Control Triggers
+  if (galleryCloseBtn) galleryCloseBtn.addEventListener('click', closeGallery);
+  if (galleryPrevBtn) galleryPrevBtn.addEventListener('click', showPrevPhoto);
+  if (galleryNextBtn) galleryNextBtn.addEventListener('click', showNextPhoto);
+
+  // Click outside main container closes gallery
+  if (galleryOverlay) {
+    galleryOverlay.addEventListener('click', (e) => {
+      if (e.target === galleryOverlay) {
+        closeGallery();
+      }
+    });
+  }
+
+  // Keyboard navigation support
+  window.addEventListener('keydown', (e) => {
+    if (!galleryOverlay.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+      closeGallery();
+    } else if (e.key === 'ArrowRight') {
+      showNextPhoto();
+    } else if (e.key === 'ArrowLeft') {
+      showPrevPhoto();
+    }
+  });
+
+  // ==========================================
+  // 12. Infinite Auto-Marquee and Drag-to-Scroll (Hotels Section)
+  // ==========================================
+  const hotelSlider = document.querySelector('.dest-slider-container.single-hotel');
+  let isUserScrolling = false;
+  let userScrollTimeout = null;
+  let isHovered = false;
+  let isDown = false;
+  let startX = 0;
+  let scrollLeftStart = 0;
+
+  if (hotelSlider) {
+    // Detect mouse hover to slow down speed
+    hotelSlider.addEventListener('mouseenter', () => {
+      isHovered = true;
+    });
+    hotelSlider.addEventListener('mouseleave', () => {
+      isHovered = false;
+      isDown = false;
+      hotelSlider.classList.remove('grabbing');
+    });
+
+    // Detect native/manual scroll actions (touch swipes, trackpad/wheel scrolls)
+    hotelSlider.addEventListener('scroll', () => {
+      // Check if actual scroll position deviates from programmatic auto-scroll path
+      const diff = Math.abs(hotelSlider.scrollLeft - expectedScrollLeft);
+      if (diff > 8) { // Increased threshold to avoid sub-pixel rounding false positives
+        // User is interacting! Halt auto-scroll.
+        isUserScrolling = true;
+        clearTimeout(userScrollTimeout);
+        userScrollTimeout = setTimeout(() => {
+          isUserScrolling = false;
+          currentScrollPosition = hotelSlider.scrollLeft;
+          expectedScrollLeft = hotelSlider.scrollLeft;
+        }, 2200); // Resume auto scroll after 2.2 seconds of inactivity
+      }
+    });
+
+    // Desktop Mouse Drag-to-Scroll Mechanics
+    hotelSlider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      hotelSlider.classList.add('grabbing');
+      startX = e.pageX - hotelSlider.offsetLeft;
+      scrollLeftStart = hotelSlider.scrollLeft;
+      isUserScrolling = true;
+      clearTimeout(userScrollTimeout);
+    });
+
+    hotelSlider.addEventListener('mouseup', () => {
+      isDown = false;
+      hotelSlider.classList.remove('grabbing');
+      userScrollTimeout = setTimeout(() => {
+        isUserScrolling = false;
+        currentScrollPosition = hotelSlider.scrollLeft;
+        expectedScrollLeft = hotelSlider.scrollLeft;
+      }, 2200);
+    });
+
+    hotelSlider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - hotelSlider.offsetLeft;
+      const walk = (x - startX) * 1.5; // Drag sensitivity multiplier
+      hotelSlider.scrollLeft = scrollLeftStart - walk;
+      expectedScrollLeft = hotelSlider.scrollLeft;
+      currentScrollPosition = hotelSlider.scrollLeft;
+    });
+
+    // Touch Events for Mobile Drag-to-Scroll Mechanics (pause marquee on touch start/move)
+    hotelSlider.addEventListener('touchstart', (e) => {
+      isDown = true;
+      isUserScrolling = true;
+      clearTimeout(userScrollTimeout);
+    }, { passive: true });
+
+    hotelSlider.addEventListener('touchend', () => {
+      isDown = false;
+      clearTimeout(userScrollTimeout);
+      userScrollTimeout = setTimeout(() => {
+        isUserScrolling = false;
+        currentScrollPosition = hotelSlider.scrollLeft;
+        expectedScrollLeft = hotelSlider.scrollLeft;
+      }, 2200);
+    });
+
+    // Sync active sub-hotel pill button based on current scroll position
+    const syncActiveSubHotel = () => {
+      const container = document.getElementById('subHotelNav');
+      if (!container) return;
+      const cards = hotelSlider.querySelectorAll('.dest-slide-card');
+      if (cards.length === 0) return;
+
+      const scrollPos = hotelSlider.scrollLeft;
+      let activeTitle = "";
+      let minDistance = Infinity;
+
+      cards.forEach(card => {
+        const dist = Math.abs(card.offsetLeft - scrollPos);
+        if (dist < minDistance) {
+          minDistance = dist;
+          const h3 = card.querySelector('h3');
+          if (h3) activeTitle = h3.textContent.trim();
+        }
+      });
+
+      if (activeTitle) {
+        const btns = container.querySelectorAll('.sub-hotel-btn');
+        btns.forEach(btn => {
+          const span = btn.querySelector('span');
+          if (span && span.textContent.trim() === activeTitle) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+    };
+
+    hotelSlider.addEventListener('scroll', syncActiveSubHotel, { passive: true });
+
+    // Stretched Frame-by-Frame requestAnimationFrame Loop
+    function marqueeStep() {
+      if (!isUserScrolling && !isDown) {
+        const maxScroll = hotelSlider.scrollWidth - hotelSlider.clientWidth;
+        if (maxScroll > 0 && currentScrollPosition < maxScroll - 1) {
+          const speed = isHovered ? 0.25 : 0.65; // slow speed on hover, normal speed otherwise
+          currentScrollPosition += speed;
+          hotelSlider.scrollLeft = currentScrollPosition;
+          expectedScrollLeft = hotelSlider.scrollLeft;
+        }
+      }
+      requestAnimationFrame(marqueeStep);
+    }
+
+    // Start auto-scroll ticker loop
+    requestAnimationFrame(marqueeStep);
+  }
+
+  // Initial setup trigger on load
+  setTimeout(() => {
+    syncAllBackdrops();
+    window.filterDestinations('thekkady');
+    window.filterExperiences('munnar');
+  }, 300);
+
+  window.addEventListener('resize', syncAllBackdrops);
+});
+
